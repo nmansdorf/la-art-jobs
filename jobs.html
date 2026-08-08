@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LA Concept Art Job Tracker — Aug 2026</title>
+<style>
+:root{
+  color-scheme: light;
+  --surface-1:#fcfcfb; --page:#f9f9f7;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --line:#c3c2b7;
+  --border:rgba(11,11,11,0.10);
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s7:#4a3aa7;
+  --good:#0ca30c; --warning:#fab219; --serious:#ec835a; --critical:#d03b3b;
+  --chip:#f0efec;
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-1:#1a1a19; --page:#0d0d0d;
+  --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --line:#383835;
+  --border:rgba(255,255,255,0.10);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s7:#9085e9;
+  --chip:#252523;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--page); color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:14px; line-height:1.5;
+}
+.wrap{max-width:1400px;margin:0 auto;padding:28px 20px 80px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:-0.02em}
+.sub{color:var(--ink-2);font-size:13px;margin:0}
+button.ghost{
+  background:var(--surface-1);border:1px solid var(--border);color:var(--ink-2);
+  border-radius:8px;padding:7px 12px;font-size:13px;cursor:pointer;font-family:inherit
+}
+button.ghost:hover{color:var(--ink)}
+
+/* stat tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.tile .v{font-size:28px;font-weight:600;letter-spacing:-0.02em;line-height:1.1}
+.tile .l{font-size:12px;color:var(--muted);margin-top:3px}
+.tile .accent{width:26px;height:3px;border-radius:2px;margin-bottom:10px;background:var(--s1)}
+
+/* filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+  background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:18px}
+.filters label{font-size:12px;color:var(--muted);margin-right:2px}
+select,input[type=search]{
+  font-family:inherit;font-size:13px;padding:6px 9px;border-radius:8px;
+  border:1px solid var(--border);background:var(--page);color:var(--ink)
+}
+input[type=search]{min-width:190px}
+.count{margin-left:auto;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* cards */
+.group-h{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--muted);margin:26px 0 10px;display:flex;align-items:center;gap:9px}
+.group-h::after{content:"";flex:1;height:1px;background:var(--grid)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+.card{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;
+  padding:15px 16px;display:flex;flex-direction:column;gap:9px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--s1)}
+.card[data-ind="animation"]::before{background:var(--s2)}
+.card[data-ind="games"]::before{background:var(--s1)}
+.card .studio{font-size:12px;color:var(--ink-2);font-weight:600;letter-spacing:0.01em}
+.card .title{font-size:15px;font-weight:600;letter-spacing:-0.01em;line-height:1.3}
+.card .meta{font-size:12.5px;color:var(--ink-2);display:flex;flex-direction:column;gap:3px}
+.card .meta b{font-weight:600;color:var(--ink)}
+.chips{display:flex;gap:5px;flex-wrap:wrap}
+.chip{font-size:11px;padding:2.5px 8px;border-radius:999px;background:var(--chip);color:var(--ink-2);white-space:nowrap}
+.chip.fit{background:rgba(12,163,12,.14);color:var(--good);font-weight:600}
+.chip.stretch{background:rgba(250,178,25,.18);color:#8a6100;font-weight:600}
+:root[data-theme="dark"] .chip.stretch{color:var(--warning)}
+.chip.reach{background:rgba(236,131,90,.18);color:#a34d22;font-weight:600}
+:root[data-theme="dark"] .chip.reach{color:var(--serious)}
+.chip.pay{background:rgba(42,120,214,.13);color:var(--s1);font-weight:600}
+.note{font-size:12px;color:var(--muted);line-height:1.45}
+.warn{font-size:12px;color:var(--serious);line-height:1.45}
+.row{display:flex;gap:8px;align-items:center;margin-top:auto;padding-top:9px;border-top:1px solid var(--grid)}
+a.apply{font-size:13px;font-weight:600;color:var(--s1);text-decoration:none}
+a.apply:hover{text-decoration:underline}
+.status{margin-left:auto}
+select.status{font-size:11.5px;padding:4px 7px}
+
+/* dead list + context */
+details{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-top:14px}
+summary{cursor:pointer;font-weight:600;font-size:14px}
+details ul{margin:12px 0 0;padding-left:18px;color:var(--ink-2);font-size:13px}
+details li{margin-bottom:6px}
+details p{color:var(--ink-2);font-size:13px}
+.ctx{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-top:14px}
+.ctx h3{margin:0 0 8px;font-size:14px}
+.ctx p{margin:0 0 10px;color:var(--ink-2);font-size:13px}
+.ctx ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:13px}
+.ctx li{margin-bottom:5px}
+footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--grid);color:var(--muted);font-size:12px}
+.hidden{display:none !important}
+@media print{ .filters,button.ghost{display:none} }
+
+.nav{display:flex;gap:16px;align-items:center;margin-bottom:20px;font-size:13px}
+.nav a{color:var(--muted);text-decoration:none;font-weight:600}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--ink)}
+.nav .home{color:var(--s1)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="nav"><a class="home" href="index.html">← Overview</a><a href="jobs.html" class="on">Job tracker</a><a href="network.html">Networking map</a></div>
+
+<header>
+  <div>
+    <h1>LA Concept &amp; 2D Art Openings</h1>
+    <p class="sub">Games + animation · Los Angeles, remote &amp; freelance · Verified live August 8, 2026</p>
+  </div>
+  <button class="ghost" id="themeBtn">Dark mode</button>
+</header>
+
+<div class="tiles">
+  <div class="tile"><div class="accent" style="background:var(--s1)"></div><div class="v" id="t-total">19</div><div class="l">Verified open roles</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s3)"></div><div class="v" id="t-fit">9</div><div class="l">Strong fit for 5–10 yrs</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s2)"></div><div class="v" id="t-la">13</div><div class="l">In the LA area</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s7)"></div><div class="v" id="t-rem">4</div><div class="l">Fully remote / freelance</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s4)"></div><div class="v">$104k–$233k</div><div class="l">Posted salary span</div></div>
+</div>
+
+<div class="filters">
+  <label for="f-ind">Industry</label>
+  <select id="f-ind"><option value="">All</option><option value="games">Games</option><option value="animation">Animation</option></select>
+
+  <label for="f-loc">Location</label>
+  <select id="f-loc"><option value="">All</option><option value="la">LA area</option><option value="remote">Remote</option></select>
+
+  <label for="f-fit">Fit</label>
+  <select id="f-fit"><option value="">All</option><option value="fit">Strong fit</option><option value="stretch">Stretch</option><option value="reach">Below level</option></select>
+
+  <label for="f-focus">Focus</label>
+  <select id="f-focus"><option value="">All</option><option value="character">Character</option><option value="environment">Environment</option><option value="both">Both</option></select>
+
+  <label for="f-type">Type</label>
+  <select id="f-type"><option value="">All</option><option value="staff">Full-time</option><option value="contract">Contract / freelance</option></select>
+
+  <input type="search" id="f-q" placeholder="Search studio or title…">
+  <span class="count" id="count"></span>
+</div>
+
+<div id="board"></div>
+
+<h2 class="group-h">Context you should know</h2>
+
+<div class="ctx">
+  <h3>The market, honestly</h3>
+  <p>This is a thin market and the list above is short because it's accurate, not because the search was shallow. My agents checked 50+ studios. Disney Animation, Pixar, Nickelodeon, Warner Bros. Animation, Paramount Animation, DreamWorks, Blizzard, Naughty Dog, Insomniac, Activision, 2K and Scopely currently have <b>zero</b> open 2D concept/design roles.</p>
+  <ul>
+    <li><b>Games in SoCal are still cutting.</b> Riot cut ~80 from the 2XKO team (Feb 2026), Wildlight was gutted (Feb 2026), Lightspeed LA cut ~80 (Jul 2026). Over half of global games layoffs have been in California.</li>
+    <li><b>Animation has one real tailwind.</b> California's expanded film/TV tax credit added animated features and series for the first time — $6.6B in first-year production spend, ~35,000 jobs. Track the California Film Commission credit award announcements; those projects are legally committed to LA production and are the clearest leading indicator of who staffs up next.</li>
+    <li><b>The Paramount–Warner Bros. Discovery close (expected Q3 2026)</b> is the biggest near-term risk to LA animation headcount — analysts project 6,000+ cuts.</li>
+  </ul>
+</div>
+
+<div class="ctx">
+  <h3>The union question — the single highest-leverage move</h3>
+  <p>The best-paying LA animation roles (Skydance, Sony Pictures Animation, Netflix Animation) are all covered by <b>The Animation Guild, Local 839</b>. Important: <b>you do not join first and then look for work — it's the reverse.</b></p>
+  <ul>
+    <li>Apply and get hired at a signatory studio as a non-member. Membership is <b>not</b> required to apply.</li>
+    <li>After 30 days of employment, you're required to join.</li>
+    <li>Initiation fee = two weeks' minimum scale (~<b>$5,200</b> for a journey Designer at 2026 rates) + $100 IATSE fee. No-interest payment plans available.</li>
+    <li>Journey-level scale as of Aug 2, 2026: <b>$64.94/hr, $2,597.60/week</b> — that's the floor, not the market rate.</li>
+    <li>Once in: the members-only jobs email, the TAG Availability Grid, and the <code>#looking-for-job</code> Discord (email Comms@tag839.org) are where a lot of work actually circulates. <a class="apply" href="https://animationguild.org/looking-for-work/" target="_blank" rel="noopener">animationguild.org/looking-for-work</a></li>
+  </ul>
+</div>
+
+<div class="ctx">
+  <h3>A heads-up on the Netflix "Ink" roles</h3>
+  <p>All four Netflix Animation Ink/Inkubator postings explicitly require <b>"familiarity with AI-assisted creative workflows"</b> and experience "integrating both traditional and generative AI tools." Depending on where she stands on that, it's either a differentiator worth leaning into or a reason to skip — worth deciding before she spends time on the application.</p>
+</div>
+
+<div class="ctx">
+  <h3>Boards worth setting up saved searches on</h3>
+  <ul>
+    <li><b>ArtStation Jobs</b> — <a class="apply" href="https://www.artstation.com/jobs/all" target="_blank" rel="noopener">artstation.com/jobs</a> · still where concept art gets posted first, and studios source directly from ArtStation portfolios. Requires manual browsing.</li>
+    <li><b>gamejobs.co</b> — <a class="apply" href="https://gamejobs.co" target="_blank" rel="noopener">gamejobs.co</a> · the most productive aggregator in this sweep. Check weekly.</li>
+    <li><b>Work With Indies</b> — <a class="apply" href="https://www.workwithindies.com" target="_blank" rel="noopener">workwithindies.com</a> · best source for freelance/contract visdev gigs.</li>
+    <li><b>EntertainmentCareers.net</b> — <a class="apply" href="https://www.entertainmentcareers.net" target="_blank" rel="noopener">entertainmentcareers.net</a> · carries LA animation studio postings incl. freelance.</li>
+    <li><b>Aquent</b> (absorbed Vitamin T) — <a class="apply" href="https://my.aquent.com" target="_blank" rel="noopener">my.aquent.com</a> · largest creative staffing firm, real pipeline into entertainment clients.</li>
+    <li><b>LinkedIn Jobs</b> — the biggest blind spot in this sweep (blocks automated search). LA studios post heavily there; set up alerts for "concept artist", "visual development artist", "environment concept artist" in Los Angeles.</li>
+  </ul>
+</div>
+
+<details>
+  <summary>Postings that look live in Google but are actually dead — don't waste time on these</summary>
+  <p>Search engines are still surfacing these with full descriptions and salaries. Every one was verified closed. This is a big part of why the LA market looks busier than it is.</p>
+  <ul>
+    <li><b>Naughty Dog — Senior Concept Artist</b> ($143,700–$179,000). Built In LA page literally says removed July 10, <b>2025</b>. Naughty Dog has no open concept roles at all.</li>
+    <li><b>Naughty Dog / PlayStation concept postings on careers.playstation.com and sms.playstation.com</b> — seven listings (Senior Environment Concept Artist, Senior Character Concept Artist, Environment Concept Artist and others). Underlying Greenhouse IDs are dead; none appear in PlayStation's live job search.</li>
+    <li><b>EA / Respawn — Lead Concept Artist, Apex Legends</b> (req 213504). Redirects to EA's generic search; not in EA's own results.</li>
+    <li><b>Sony Pictures Animation — Background Artist, Series</b> (req 7741055003). Returns the dead-posting error signature.</li>
+    <li><b>Blizzard concept art roles</b> — six separate reqs (Lead Concept Artist, Principal Concept Artist Environment, Senior Concept Artist OW2, Senior Concept Artist Characters, Concept Artist–Storyboards, Concept Art Internship) all return HTTP 410 Gone. Blizzard's board is JS-only so this one deserves a human eyeball, but there's no evidence of anything live.</li>
+    <li><b>DreamWorks TV — Visual Development Artist</b> (3+ yrs) — posted Apr 29, 2026, filled May 4, 2026.</li>
+    <li><b>Disney TV Animation — Prop Designer</b> — 404 / removed.</li>
+    <li><b>Plumeria Studio — Stylized Character Concept Artist</b> — marked closed.</li>
+  </ul>
+</details>
+
+<details>
+  <summary>Pipeline plays — no posting, but worth submitting anyway</summary>
+  <ul>
+    <li><b>Titmouse (LA)</b> — all seven current production-art openings are Vancouver-only, but the LA expression-of-interest form is open and Titmouse hires off it. <a class="apply" href="https://titmouse.net/careers/" target="_blank" rel="noopener">titmouse.net/careers</a></li>
+    <li><b>DreamWorks Animation</b> — "Express Interest" form is live even though only a Production Assistant role is posted. <a class="apply" href="https://www.dreamworks.com/careers" target="_blank" rel="noopener">dreamworks.com/careers</a></li>
+    <li><b>Netflix Animation Inkubator</b> — open artistic portfolio pipeline, LA. <a class="apply" href="https://explore.jobs.netflix.net/careers/job/790314821298" target="_blank" rel="noopener">Expression of Interest</a></li>
+    <li><b>The Third Floor</b> — general US expression of interest, LA. <a class="apply" href="https://thethirdfloorinc.hrmdirect.com/employment/job-openings.php" target="_blank" rel="noopener">Careers</a></li>
+    <li><b>Bento Box Entertainment</b> — portfolio-collection posting open (Atlanta/remote).</li>
+  </ul>
+</details>
+
+<footer>
+  Every role above was verified by loading the studio's own live job board and confirming an application form renders — postings that merely appear in search results were excluded. Salary figures are the studio's own posted ranges (California pay-transparency law). Status selections save in this browser only. Re-verify before applying; postings move fast.
+</footer>
+
+</div>
+
+<script>
+const JOBS = [
+ // ===== LA — GAMES =====
+ {studio:"Santa Monica Studio (Sony)", title:"Sr Concept Artist, Environments", ind:"games", loc:"la", locText:"Los Angeles · Hybrid",
+  type:"staff", typeText:"Full-time", exp:"3+ yrs AAA game platform experience", pay:"$120,600 – $180,800", focus:"environment",
+  fit:"fit", note:"Environments, props, color scripts, visual guides and marketing art for an unannounced PS title.",
+  url:"https://job-boards.greenhouse.io/sonyinteractiveentertainmentglobal/jobs/6118327004", group:"top"},
+
+ {studio:"Bonfire Studios", title:"Character Concept Artist (Senior/Principal)", ind:"games", loc:"la", locText:"Irvine, CA · Hybrid",
+  type:"staff", typeText:"Full-time", exp:"Mid-level through principal — range explicitly spans both", pay:"$174,800 – $221,817", focus:"character",
+  fit:"fit", note:"Highest posted range of any role on this list. Small veteran studio (ex-Blizzard leadership).",
+  url:"https://bonfirestudios.com/work-with-us/4022147009/", group:"top"},
+
+ {studio:"Respawn / EA", title:"Concept Character Artist — Apex Legends", ind:"games", loc:"la", locText:"LA–Chatsworth · Hybrid",
+  type:"staff", typeText:"Full-time", exp:"3+ yrs as a concept artist", pay:"$104,400 – $157,400", focus:"character",
+  fit:"fit", note:"Character design, cosmetics and outfits for a live-service title. Low experience bar for the pay.",
+  url:"https://jobs.ea.com/en_US/careers/JobDetail/Concept-Character-Artist-Apex-Legends/214768", group:"top"},
+
+ {studio:"Respawn / EA", title:"Concept Hard Surface Artist — Apex Legends", ind:"games", loc:"la", locText:"LA–Chatsworth · Hybrid",
+  type:"staff", typeText:"Full-time", exp:"3+ yrs as a concept artist", pay:"$104,400 – $157,400", focus:"environment",
+  fit:"fit", note:"Weapons, industrial design, production-ready illustration.",
+  url:"https://jobs.ea.com/en_US/careers/JobDetail/Concept-Hard-Surface-Artist-Apex-Legends/214772", group:"top"},
+
+ {studio:"Riot Games", title:"Principal Concept Artist, Environment/Character — League of Legends", ind:"games", loc:"la", locText:"Los Angeles · Onsite",
+  type:"staff", typeText:"Full-time", exp:"10+ yrs concept art for games or animation", pay:"$166,600 – $232,800 + equity", focus:"both",
+  fit:"stretch", note:"Top comp on the list but above the target band. Riot's only true 2D concept opening in LA.",
+  warn:"Riot cut ~80 from the 2XKO team in Feb 2026 — worth asking about team stability.",
+  url:"https://www.riotgames.com/en/j/8070799", group:"top"},
+
+ // ===== LA — ANIMATION =====
+ {studio:"Sony Pictures Animation", title:"Visual Development Artist", ind:"animation", loc:"la", locText:"Los Angeles · Onsite",
+  type:"staff", typeText:"Staff · TAG union", exp:"No minimum stated — portfolio-driven", pay:"$59.16 – $85.00/hr (≈$123k–$177k)", focus:"both",
+  fit:"fit", note:"Sets, locations, props, characters, VFX, color schemes and overall style. Broadest scope of any animation role open in LA.",
+  url:"https://job-boards.greenhouse.io/sonypicturesanimation/jobs/7583479003", group:"top"},
+
+ {studio:"Skydance Animation", title:"Visual Development Artist", ind:"animation", loc:"la", locText:"Santa Monica · Hybrid",
+  type:"staff", typeText:"Full-time · TAG union", exp:"8+ yrs environment design/visdev on animated features", pay:"$2,900 – $4,000/week", focus:"environment",
+  fit:"fit", note:"Environment and set design — floor plans, set dressing.",
+  warn:"Unlisted posting: it's absent from Skydance's public board but the application form is live and working. Apply via the direct link.",
+  url:"https://jobs.lever.co/skydance/9f8e7d96-faeb-4789-a6fa-4dfc674665f9", group:"top"},
+
+ {studio:"Skydance Animation", title:"Character Designer", ind:"animation", loc:"la", locText:"Santa Monica · Hybrid",
+  type:"staff", typeText:"Full-time · TAG union", exp:"8+ yrs character design on animated features", pay:"$2,900 – $4,000/week", focus:"character",
+  fit:"fit", note:"Pure character design for feature animation. Guild membership required or willingness to obtain.",
+  url:"https://jobs.lever.co/skydance/9084fa54-a4e8-4886-abb1-5dd060c83663", group:"top"},
+
+ {studio:"Sony Pictures Animation", title:"Character Designer", ind:"animation", loc:"la", locText:"Culver City · Onsite",
+  type:"staff", typeText:"Staff · TAG union", exp:"Feature/TV/game experience preferred, no year minimum", pay:"$42.64 – $72.00/hr", focus:"character",
+  fit:"fit", note:"Character appearance, expressions, poses, turnarounds.",
+  warn:"Verify before applying — Sony's board showed only 2 live roles on final check and this may have closed.",
+  url:"https://job-boards.greenhouse.io/sonypicturesanimation/jobs/6213553003", group:"second"},
+
+ {studio:"Netflix Animation (Ink)", title:"Visual Development Artist", ind:"animation", loc:"la", locText:"Los Angeles · Onsite",
+  type:"staff", typeText:"Not stated", exp:"4+ yrs visdev in animation, VFX, games or digital media", pay:"Not posted (~$70/hr per aggregators)", focus:"both",
+  fit:"fit", note:"Characters, environments and set layouts for Netflix's Ink group.",
+  warn:"Requires familiarity with AI-assisted and generative AI creative workflows.",
+  url:"https://explore.jobs.netflix.net/careers/job/790317300191", group:"second"},
+
+ {studio:"Skydance Animation", title:"Costume Designer (Visual Development)", ind:"animation", loc:"la", locText:"Santa Monica · Hybrid",
+  type:"staff", typeText:"Full-time · TAG union", exp:"8+ yrs visdev on animated projects + 1+ yr costume design", pay:"$2,900 – $4,000/week", focus:"character",
+  fit:"fit", note:"2D drawing / Photoshop-based character costume work. Niche but the visdev requirement is the real bar.",
+  url:"https://jobs.lever.co/skydance/e4a59a8a-28f3-46f7-ae4d-5ad8eb5cab06", group:"second"},
+
+ {studio:"Skydance Animation", title:"Art Director", ind:"animation", loc:"la", locText:"Santa Monica · Hybrid",
+  type:"staff", typeText:"Full-time · TAG union", exp:"6+ yrs on animated feature productions", pay:"$2,900 – $4,000/week", focus:"both",
+  fit:"stretch", note:"Environments, sets, props and color design. Leadership role — a step up if she's ready to direct.",
+  url:"https://jobs.lever.co/skydance/3c0632d5-f6a1-436b-a94c-a41854ebcce3", group:"second"},
+
+ {studio:"Netflix Animation (Ink)", title:"Art Director", ind:"animation", loc:"la", locText:"Los Angeles · Onsite",
+  type:"staff", typeText:"Not stated", exp:"3+ yrs supervisory/leadership on animated features or series", pay:"Not posted", focus:"both",
+  fit:"stretch", note:"Oversees visdev, color design, background painting and character design.",
+  warn:"Requires familiarity with AI-assisted and generative AI creative workflows.",
+  url:"https://explore.jobs.netflix.net/careers/job/790315938401", group:"second"},
+
+ {studio:"Netflix Animation (Ink)", title:"Character Designer", ind:"animation", loc:"la", locText:"Los Angeles · Onsite",
+  type:"staff", typeText:"Not stated", exp:"2+ yrs, or a strong production-ready portfolio", pay:"Not posted (~$70/hr per aggregators)", focus:"character",
+  fit:"reach", note:"Junior-to-mid bar — likely below her level and pay, but a fast door into Netflix Animation.",
+  warn:"Requires familiarity with AI-assisted and generative AI creative workflows.",
+  url:"https://explore.jobs.netflix.net/careers/job/790317332872", group:"second"},
+
+ {studio:"Skydance Animation", title:"Associate Costume Designer", ind:"animation", loc:"la", locText:"Santa Monica · Hybrid",
+  type:"staff", typeText:"Full-time · TAG union", exp:"Associate level", pay:"Not posted", focus:"character",
+  fit:"reach", note:"Below her level, but another route onto the Skydance visdev team.",
+  url:"https://jobs.lever.co/skydance", group:"second"},
+
+ // ===== REMOTE / FREELANCE =====
+ {studio:"Obsidian Entertainment", title:"Senior Concept Artist (Contract)", ind:"games", loc:"remote", locText:"Fully remote (US)",
+  type:"contract", typeText:"6-month contract, extension possible", exp:"6+ yrs game development", pay:"$60 – $64/hr", focus:"both",
+  fit:"fit", note:"Environment, character, creature, vehicle, weapon and prop. The single best remote fit on the list — squarely in her experience band.",
+  url:"https://obsidian.applytojob.com/apply/gCQoTttJjV/Senior-Concept-Artist-Contract", group:"remote"},
+
+ {studio:"Mob Entertainment", title:"2D Art Lead", ind:"games", loc:"remote", locText:"Fully remote (US)",
+  type:"staff", typeText:"Full-time", exp:"5+ yrs 2D game art, 3+ yrs leading 2D teams", pay:"$132,000 – $169,000 (LA tier)", focus:"both",
+  fit:"fit", note:"Style, concept, production and marketing art. Poppy Playtime studio. Pay is tiered by metro — LA gets the top band.",
+  url:"https://job-boards.greenhouse.io/mobentertainment/jobs/5200088007", group:"remote"},
+
+ {studio:"NetEase Games", title:"Senior/Lead Character Concept Artist (Stylized)", ind:"games", loc:"remote", locText:"US-remote eligible",
+  type:"staff", typeText:"Full-time", exp:"5+ yrs character concept art", pay:"Not disclosed", focus:"character",
+  fit:"fit", note:"High-quality stylized character design. Leadership experience preferred, not required.",
+  url:"https://job-boards.greenhouse.io/neteasegames/jobs/5191784007", group:"remote"},
+
+ {studio:"Clay Urn LLC", title:"Visual Development / Concept Artist", ind:"games", loc:"remote", locText:"Remote",
+  type:"contract", typeText:"Freelance · 4–6 weeks part-time", exp:"Portfolio-based", pay:"$3,500 fixed fee", focus:"both",
+  fit:"reach", note:"Direction boards, paintovers, creature sheets. Small gig — useful as gap-filler, not a target.",
+  url:"https://www.workwithindies.com/careers/clay-urn-visual-development-concept-artist", group:"remote"},
+
+ {studio:"Skydance Animation", title:"2D Effects Artist", ind:"animation", loc:"remote", locText:"Santa Monica / Remote",
+  type:"contract", typeText:"Temporary / freelance", exp:"Not stated", pay:"Not posted", focus:"both",
+  fit:"reach", note:"Adjacent discipline — listed only because it's a live foot in the door at Skydance.",
+  url:"https://jobs.lever.co/skydance/53d76f8f-f886-472e-b526-331056e7c87a", group:"remote"}
+];
+
+const GROUPS = [
+  {key:"top",    label:"Apply first — strongest matches"},
+  {key:"second", label:"Also worth applying"},
+  {key:"remote", label:"Remote &amp; freelance"}
+];
+const FITLABEL = {fit:"Strong fit", stretch:"Stretch", reach:"Below level"};
+
+const board = document.getElementById("board");
+const store = () => { try { return JSON.parse(localStorage.getItem("jobstatus")||"{}"); } catch(e){ return {}; } };
+let statuses = store();
+
+function keyOf(j){ return j.studio + "::" + j.title; }
+
+function render(){
+  const f = {
+    ind: document.getElementById("f-ind").value,
+    loc: document.getElementById("f-loc").value,
+    fit: document.getElementById("f-fit").value,
+    focus: document.getElementById("f-focus").value,
+    type: document.getElementById("f-type").value,
+    q: document.getElementById("f-q").value.trim().toLowerCase()
+  };
+  const match = j =>
+    (!f.ind || j.ind===f.ind) &&
+    (!f.loc || j.loc===f.loc) &&
+    (!f.fit || j.fit===f.fit) &&
+    (!f.focus || j.focus===f.focus) &&
+    (!f.type || j.type===f.type) &&
+    (!f.q || (j.studio+" "+j.title).toLowerCase().includes(f.q));
+
+  const shown = JOBS.filter(match);
+  board.innerHTML = "";
+  GROUPS.forEach(g => {
+    const items = shown.filter(j => j.group===g.key);
+    if(!items.length) return;
+    const h = document.createElement("h2");
+    h.className = "group-h"; h.innerHTML = g.label;
+    board.appendChild(h);
+    const grid = document.createElement("div");
+    grid.className = "cards";
+    items.forEach(j => grid.appendChild(card(j)));
+    board.appendChild(grid);
+  });
+  if(!shown.length){
+    board.innerHTML = '<p style="color:var(--muted);padding:30px 0">No roles match those filters.</p>';
+  }
+  document.getElementById("count").textContent = shown.length + " of " + JOBS.length + " roles";
+}
+
+function card(j){
+  const el = document.createElement("div");
+  el.className = "card"; el.dataset.ind = j.ind;
+  const k = keyOf(j);
+  const cur = statuses[k] || "todo";
+  el.innerHTML = `
+    <div class="studio">${j.studio}</div>
+    <div class="title">${j.title}</div>
+    <div class="chips">
+      <span class="chip ${j.fit}">${FITLABEL[j.fit]}</span>
+      ${j.pay.startsWith("$") ? `<span class="chip pay">${j.pay}</span>` : `<span class="chip">${j.pay}</span>`}
+      <span class="chip">${j.focus==="both"?"Character + environment":j.focus==="character"?"Character":"Environment"}</span>
+    </div>
+    <div class="meta">
+      <span>${j.locText} · ${j.typeText}</span>
+      <span><b>Experience:</b> ${j.exp}</span>
+    </div>
+    <div class="note">${j.note}</div>
+    ${j.warn ? `<div class="warn">⚠ ${j.warn}</div>` : ""}
+    <div class="row">
+      <a class="apply" href="${j.url}" target="_blank" rel="noopener">Open posting →</a>
+      <select class="status" data-k="${k}">
+        <option value="todo">Not started</option>
+        <option value="prepping">Prepping portfolio</option>
+        <option value="applied">Applied</option>
+        <option value="interviewing">Interviewing</option>
+        <option value="closed">Passed / closed</option>
+      </select>
+    </div>`;
+  const sel = el.querySelector("select.status");
+  sel.value = cur;
+  sel.addEventListener("change", e => {
+    statuses[k] = e.target.value;
+    try { localStorage.setItem("jobstatus", JSON.stringify(statuses)); } catch(err){}
+  });
+  return el;
+}
+
+["f-ind","f-loc","f-fit","f-focus","f-type"].forEach(id =>
+  document.getElementById(id).addEventListener("change", render));
+document.getElementById("f-q").addEventListener("input", render);
+
+const btn = document.getElementById("themeBtn");
+btn.addEventListener("click", () => {
+  const dark = document.documentElement.getAttribute("data-theme")==="dark";
+  document.documentElement.setAttribute("data-theme", dark ? "light":"dark");
+  btn.textContent = dark ? "Dark mode" : "Light mode";
+});
+if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches){
+  document.documentElement.setAttribute("data-theme","dark");
+  btn.textContent = "Light mode";
+}
+
+document.getElementById("t-total").textContent = JOBS.length;
+document.getElementById("t-fit").textContent = JOBS.filter(j=>j.fit==="fit").length;
+document.getElementById("t-la").textContent = JOBS.filter(j=>j.loc==="la").length;
+document.getElementById("t-rem").textContent = JOBS.filter(j=>j.loc==="remote").length;
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LA Concept Art Job Search</title>
+<meta name="description" content="Verified concept art, visual development and 2D art openings in Los Angeles games and animation, with a networking map of studio art leadership.">
+<style>
+:root{
+  color-scheme: light;
+  --surface-1:#fcfcfb; --page:#f9f9f7;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --border:rgba(11,11,11,0.10);
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --good:#0ca30c; --critical:#d03b3b;
+  --chip:#f0efec;
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-1:#1a1a19; --page:#0d0d0d;
+  --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --border:rgba(255,255,255,0.10);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+  --chip:#252523;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.55}
+.wrap{max-width:900px;margin:0 auto;padding:44px 20px 80px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+h1{font-size:34px;margin:0 0 6px;letter-spacing:-0.025em;line-height:1.15}
+.sub{color:var(--ink-2);font-size:15px;margin:0;max-width:60ch}
+button.ghost{background:var(--surface-1);border:1px solid var(--border);color:var(--ink-2);
+  border-radius:8px;padding:7px 12px;font-size:13px;cursor:pointer;font-family:inherit;flex-shrink:0}
+button.ghost:hover{color:var(--ink)}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:26px 0}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.tile .accent{width:26px;height:3px;border-radius:2px;margin-bottom:10px}
+.tile .v{font-size:26px;font-weight:600;letter-spacing:-0.02em;line-height:1.1}
+.tile .l{font-size:12px;color:var(--muted);margin-top:3px}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin:26px 0}
+a.card{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;
+  background:var(--surface-1);border:1px solid var(--border);border-radius:14px;
+  padding:20px 22px;position:relative;overflow:hidden;transition:border-color .12s}
+a.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--s1)}
+a.card.two::before{background:var(--s2)}
+a.card:hover{border-color:var(--s1)}
+a.card.two:hover{border-color:var(--s2)}
+a.card h2{margin:0;font-size:19px;letter-spacing:-0.015em}
+a.card p{margin:0;font-size:13.5px;color:var(--ink-2)}
+a.card .go{font-size:13px;font-weight:600;color:var(--s1);margin-top:4px}
+a.card.two .go{color:var(--s2)}
+
+.alert{background:var(--surface-1);border:1px solid var(--border);border-left:3px solid var(--critical);
+  border-radius:12px;padding:16px 18px;margin:26px 0}
+.alert h3{margin:0 0 6px;font-size:14px}
+.alert p{margin:0;color:var(--ink-2);font-size:13.5px}
+.alert a{color:var(--s1)}
+
+section{margin-top:34px}
+h2.sec{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 12px;display:flex;align-items:center;gap:9px}
+h2.sec::after{content:"";flex:1;height:1px;background:var(--grid)}
+.body p{color:var(--ink-2);font-size:14px;margin:0 0 12px}
+.body ul{color:var(--ink-2);font-size:14px;margin:0 0 12px;padding-left:20px}
+.body li{margin-bottom:7px}
+.body b{color:var(--ink)}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--grid);color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div>
+    <h1>LA Concept Art Job Search</h1>
+    <p class="sub">Environment and character concept art, visual development, and 2D design roles across Los Angeles games and animation — verified live, not scraped from stale search results.</p>
+  </div>
+  <button class="ghost" id="themeBtn">Dark mode</button>
+</header>
+
+<div class="tiles">
+  <div class="tile"><div class="accent" style="background:var(--s1)"></div><div class="v">20</div><div class="l">Verified open roles</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s3)"></div><div class="v">13</div><div class="l">Strong fit, 5–10 yrs</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s2)"></div><div class="v">10</div><div class="l">Studios mapped</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s4)"></div><div class="v">40+</div><div class="l">Named art leads</div></div>
+</div>
+
+<div class="cards">
+  <a class="card" href="jobs.html">
+    <h2>Job tracker</h2>
+    <p>Every verified-live opening, filterable by industry, location, experience fit, focus and employment type. Tracks application status per role. Includes the dead-posting list — roles that still rank in Google but closed months ago.</p>
+    <span class="go">Open tracker →</span>
+  </a>
+  <a class="card two" href="network.html">
+    <h2>Networking map</h2>
+    <p>Sixty pre-filtered LinkedIn searches limited to 1st- and 2nd-degree connections, plus verified art directors and concept leads at each studio, plus LA industry events with 2026 dates.</p>
+    <span class="go">Open map →</span>
+  </a>
+</div>
+
+<div class="alert">
+  <h3>⏰ Nearest deadline — Aug 17, 2026, 9:00am PT</h3>
+  <p>Concept Art Awards submissions close. Judges are working art directors at the studios on this list, and the ceremony runs inside LightBox Expo in October. Eligible work: released Aug 19, 2025 – Aug 17, 2026. <a href="https://www.conceptartassociation.com/caa-2026" target="_blank" rel="noopener">Submit →</a></p>
+</div>
+
+<section class="body">
+  <h2 class="sec">How this was built</h2>
+  <p>Over fifty studio career pages were checked directly. A role only appears here if its own job board loaded <b>and</b> an application form rendered — postings that merely appear in search results were excluded and listed separately as dead.</p>
+  <p>That distinction turned out to matter more than expected. The Naughty Dog Senior Concept Artist listing that ranks well on Google was removed in <b>July 2025</b>. Seven PlayStation-hosted concept postings have dead application IDs. Six Blizzard concept requisitions return HTTP 410. A market that looks moderately active in search results is considerably thinner in reality.</p>
+  <ul>
+    <li><b>Disney Animation, Pixar, Nickelodeon, Warner Bros. Animation, Paramount Animation, DreamWorks, Blizzard, Naughty Dog, Insomniac, Activision, 2K and Scopely</b> currently have zero open 2D concept roles.</li>
+    <li><b>Games in SoCal are still contracting</b> — Riot cut ~80 from 2XKO in February 2026, Wildlight was gutted the same month, Lightspeed LA cut ~80 in July. Over half of global games layoffs have been in California.</li>
+    <li><b>Animation has one real tailwind.</b> California's expanded film and TV tax credit added animated features and series for the first time — $6.6B in first-year production spend. The Film Commission's credit award announcements are the clearest leading indicator of which LA studios staff up next.</li>
+  </ul>
+</section>
+
+<section class="body">
+  <h2 class="sec">The union question</h2>
+  <p>The best-paying LA animation roles — Skydance, Sony Pictures Animation, Netflix Animation — are covered by <b>The Animation Guild, Local 839</b>. The mechanics run backwards from what most people assume: you apply and get hired as a non-member, then join after 30 days of employment. Membership is not a prerequisite for applying.</p>
+  <p>Initiation is two weeks' minimum scale — roughly <b>$5,200</b> for a journey Designer at 2026 rates — plus a $100 IATSE fee, with no-interest payment plans available. Journey-level scale as of August 2, 2026 is $64.94/hr. That's the floor, not the market rate.</p>
+</section>
+
+<footer>
+  Verified August 8, 2026. Salary figures are studios' own posted ranges under California pay-transparency law. Named individuals come from public professional sources only — studio rosters, published credits, ArtStation Art Blasts, conference programs and trade press. No private contact information appears anywhere on this site. Re-verify postings before applying; they move fast.
+</footer>
+
+</div>
+<script>
+const btn = document.getElementById("themeBtn");
+function setT(d){
+  document.documentElement.setAttribute("data-theme", d ? "dark":"light");
+  btn.textContent = d ? "Light mode" : "Dark mode";
+  try{ localStorage.setItem("theme", d ? "dark":"light"); }catch(e){}
+}
+btn.addEventListener("click", () => setT(document.documentElement.getAttribute("data-theme")!=="dark"));
+let saved=null; try{ saved=localStorage.getItem("theme"); }catch(e){}
+if(saved) setT(saved==="dark");
+else if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) setT(true);
+</script>
+</body>
+</html>

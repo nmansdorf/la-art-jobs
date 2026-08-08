@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LinkedIn Networking Map — LA Concept Art Studios</title>
+<style>
+:root{
+  color-scheme: light;
+  --surface-1:#fcfcfb; --page:#f9f9f7;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --border:rgba(11,11,11,0.10);
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s7:#4a3aa7;
+  --good:#0ca30c; --warning:#fab219; --serious:#ec835a; --critical:#d03b3b;
+  --chip:#f0efec;
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --surface-1:#1a1a19; --page:#0d0d0d;
+  --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --border:rgba(255,255,255,0.10);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s7:#9085e9;
+  --chip:#252523;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
+header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+h1{font-size:26px;margin:0 0 4px;letter-spacing:-0.02em}
+.sub{color:var(--ink-2);font-size:13px;margin:0}
+button.ghost{background:var(--surface-1);border:1px solid var(--border);color:var(--ink-2);
+  border-radius:8px;padding:7px 12px;font-size:13px;cursor:pointer;font-family:inherit}
+
+.callout{background:var(--surface-1);border:1px solid var(--border);border-left:3px solid var(--s4);
+  border-radius:12px;padding:16px 18px;margin:20px 0}
+.callout.urgent{border-left-color:var(--critical)}
+.callout h3{margin:0 0 7px;font-size:14px}
+.callout p{margin:0 0 8px;color:var(--ink-2);font-size:13px}
+.callout p:last-child{margin-bottom:0}
+.callout ol,.callout ul{margin:8px 0 0;padding-left:20px;color:var(--ink-2);font-size:13px}
+.callout li{margin-bottom:6px}
+
+.group-h{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--muted);margin:30px 0 12px;display:flex;align-items:center;gap:9px}
+.group-h::after{content:"";flex:1;height:1px;background:var(--grid)}
+
+.studio{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;
+  padding:16px 18px;margin-bottom:12px;position:relative;overflow:hidden}
+.studio::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--s1)}
+.studio[data-ind="animation"]::before{background:var(--s2)}
+.studio h2{margin:0 0 2px;font-size:17px;letter-spacing:-0.01em}
+.role{font-size:12.5px;color:var(--muted);margin:0 0 12px}
+.role b{color:var(--ink-2);font-weight:600}
+
+.searches{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.searches a{font-size:12px;padding:5px 11px;border-radius:999px;background:var(--chip);
+  color:var(--s1);text-decoration:none;font-weight:600;white-space:nowrap;border:1px solid transparent}
+.searches a:hover{border-color:var(--s1)}
+.slabel{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;
+  font-weight:600;margin:0 0 6px}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+  font-weight:600;padding:6px 10px 6px 0;border-bottom:1px solid var(--grid)}
+td{padding:8px 10px 8px 0;border-bottom:1px solid var(--grid);vertical-align:top;color:var(--ink-2)}
+td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td a{color:var(--s1);text-decoration:none}
+td a:hover{text-decoration:underline}
+.tag{font-size:10.5px;padding:2px 7px;border-radius:999px;background:var(--chip);color:var(--ink-2);
+  margin-left:6px;white-space:nowrap;font-weight:600}
+.tag.hot{background:rgba(12,163,12,.14);color:var(--good)}
+.tag.warn{background:rgba(236,131,90,.18);color:#a34d22}
+:root[data-theme="dark"] .tag.warn{color:var(--serious)}
+.none{font-size:12.5px;color:var(--muted);font-style:italic;margin:6px 0 0}
+.warnline{font-size:12.5px;color:var(--serious);margin:10px 0 0}
+footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--grid);color:var(--muted);font-size:12px}
+footer a{color:var(--muted)}
+@media print{button.ghost{display:none}}
+
+.nav{display:flex;gap:16px;align-items:center;margin-bottom:20px;font-size:13px}
+.nav a{color:var(--muted);text-decoration:none;font-weight:600}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--ink)}
+.nav .home{color:var(--s1)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="nav"><a class="home" href="index.html">← Overview</a><a href="jobs.html">Job tracker</a><a href="network.html" class="on">Networking map</a></div>
+
+<header>
+  <div>
+    <h1>LinkedIn Networking Map</h1>
+    <p class="sub">Pre-filtered 2nd-degree searches + verified art leadership at every studio with a live opening · August 8, 2026</p>
+  </div>
+  <button class="ghost" id="themeBtn">Dark mode</button>
+</header>
+
+<div class="callout">
+  <h3>How to use this — read once, then it's self-explanatory</h3>
+  <p>Every blue pill below is a <b>live LinkedIn search URL pre-filtered to 1st- and 2nd-degree connections only</b>. Click it while logged in and LinkedIn returns exactly the people in your extended network at that company. Because degree is relative to whoever is signed in, <b>Nick and Monica will get different results from the same link</b> — run them from both accounts and compare. Monica's own network is the more useful one for warm intros; Nick's is the wider net for referrals.</p>
+  <ol>
+    <li>Open a link. Confirm the <b>Connections</b> filter shows 1st + 2nd (it's pre-set in the URL).</li>
+    <li>Anyone marked <b>2nd</b> — click through and look at <b>"Mutual connections."</b> That shared person is the actual asset, not the target.</li>
+    <li>Ask the mutual for the intro. Never cold-InMail a 2nd-degree when a mutual exists.</li>
+    <li>The named people in each table are verified from public sources — search those names first, they're the highest-value hits.</li>
+  </ol>
+</div>
+
+<div class="callout urgent">
+  <h3>⏰ One hard deadline: 9 days out</h3>
+  <p><b>Concept Art Awards 2026 — submissions close Sat Aug 17, 2026, 9:00am PT.</b> Judges are working art directors at these exact studios (Santa Monica Studio's Lead Character Concept Artist has judged). Finalists are announced Sept 11 and the ceremony runs inside LightBox Expo on Oct 24 at the Pasadena Civic Auditorium. Eligible work: released between Aug 19, 2025 and Aug 17, 2026. Categories include character design, creatures, environments, and visual development.</p>
+  <p>If Monica has anything eligible, this is the single highest-leverage nine days on the calendar — it puts her work in front of the hiring layer <i>by design</i>, which is the opposite of the cold-application dynamic. <a href="https://www.conceptartassociation.com/caa-2026" target="_blank" rel="noopener">conceptartassociation.com/caa-2026</a></p>
+</div>
+
+<h2 class="group-h">Games studios</h2>
+
+<div class="studio" data-ind="games">
+  <h2>Respawn Entertainment / EA <span class="tag hot">Best-timed target</span></h2>
+  <p class="role"><b>Live roles:</b> Concept Character Artist · Concept Hard Surface Artist — LA-Chatsworth, hybrid</p>
+  <p class="slabel">2nd-degree searches</p>
+  <div class="searches" data-co="Respawn Entertainment"></div>
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Why they matter</th></tr>
+    <tr><td>Ryan Lastimosa</td><td>Franchise Art Director</td><td><b>Returned to Respawn on Aug 1, 2026 — one week ago.</b> Founding member; shaped Titanfall's art and directed Apex's 3D art. A franchise AD who just started is actively reassessing the art org, which is the most permeable moment a studio has. <a href="https://www.artstation.com/brockhaurd" target="_blank" rel="noopener">ArtStation</a></td></tr>
+    <tr><td>Jung Park</td><td>Lead Concept Artist / Sr Art Director</td><td>13+ years, frequently interviewed, highly public. Realistic to engage with through his work rather than cold. <a href="https://www.artstation.com/jungpark" target="_blank" rel="noopener">ArtStation</a></td></tr>
+    <tr><td>Cliff Childs</td><td>Senior Concept Artist</td><td>Peer level — the person who'd actually review her portfolio. <a href="https://www.artstation.com/cliffy" target="_blank" rel="noopener">ArtStation</a></td></tr>
+    <tr><td>Danny Gardner</td><td>Senior Concept Artist</td><td>Peer level. <a href="https://www.artstation.com/dannygardner" target="_blank" rel="noopener">ArtStation</a></td></tr>
+    <tr><td>Tu Bui</td><td>Sr Matte Painter / Concept Artist</td><td>Environment-side peer. <a href="https://www.artstation.com/2buiart" target="_blank" rel="noopener">ArtStation</a></td></tr>
+  </table>
+</div>
+
+<div class="studio" data-ind="games">
+  <h2>Riot Games <span class="tag hot">Most transparent hiring</span></h2>
+  <p class="role"><b>Live role:</b> Principal Concept Artist, Environment/Character — LA, onsite</p>
+  <p class="slabel">2nd-degree searches</p>
+  <div class="searches" data-co="Riot Games"></div>
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Why they matter</th></tr>
+    <tr><td>Ben Skutt</td><td>Art Director / Head of Art Outsource</td><td>Public conference speaker at XDS — legitimately approachable in a professional context. <a href="https://xdsummit.com/speaker/ben-skutt/" target="_blank" rel="noopener">XDS profile</a></td></tr>
+    <tr><td>Renaud Galand</td><td>Character Art Director</td><td>Ex-Overwatch Lead Character Artist. <span class="tag warn">Verify current employer</span> — an unconfirmed signal suggests a possible move to Theorycraft. <a href="https://www.artstation.com/renaudgaland" target="_blank" rel="noopener">ArtStation</a></td></tr>
+    <tr><td>Igor Artyomenko</td><td>Senior Concept Artist, LoL</td><td>Direct peer on the team that's hiring. <a href="https://www.artstation.com/haryarti" target="_blank" rel="noopener">ArtStation</a></td></tr>
+    <tr><td>Julian Futanto</td><td>Art Lead</td><td><a href="https://www.artstation.com/joofoot" target="_blank" rel="noopener">ArtStation</a></td></tr>
+    <tr><td>Michael Bomani</td><td>Visual Design Art Lead</td><td><a href="https://www.artstation.com/kuniso" target="_blank" rel="noopener">ArtStation</a></td></tr>
+  </table>
+  <p class="warnline">Riot publishes its actual portfolio spec — read and follow it literally before applying: <a href="https://www.riotgames.com/en/portfolio-and-reel-suggestions" target="_blank" rel="noopener">Portfolio &amp; Reel Suggestions</a>. Their artists also do public live portfolio reviews on YouTube, which is free signal on what gets rejected and why. Riot's recurring <a href="https://magazine.artstation.com/category/art-blast/" target="_blank" rel="noopener">Art Blasts</a> are a reliable published map of who holds which art title.</p>
+</div>
+
+<div class="studio" data-ind="games">
+  <h2>Santa Monica Studio (Sony) <span class="tag hot">Best role fit</span></h2>
+  <p class="role"><b>Live role:</b> Sr Concept Artist, Environments — LA, hybrid · $120,600–$180,800</p>
+  <p class="slabel">2nd-degree searches</p>
+  <div class="searches" data-co="Santa Monica Studio"></div>
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Why they matter</th></tr>
+    <tr><td>Dela Longfish</td><td>Lead Character Concept Artist</td><td><b>The best warm target at this studio.</b> Judged the Concept Art Association awards — community-engaged and public-facing by choice. <a href="https://www.artstation.com/delalongfish" target="_blank" rel="noopener">ArtStation</a></td></tr>
+    <tr><td>Luke Berliner</td><td>Lead Environment Concept Artist</td><td><b>Directly leads the discipline the open role sits in.</b> <a href="https://www.artstation.com/lukeberliner" target="_blank" rel="noopener">ArtStation</a></td></tr>
+    <tr><td>Abe Taraky</td><td>Concept Artist</td><td>Peer level. <a href="https://www.artstation.com/abe-taraky" target="_blank" rel="noopener">ArtStation</a></td></tr>
+    <tr><td>Annis Naeem</td><td>Concept Artist</td><td>Peer level. <a href="https://www.artstation.com/annisnaeem" target="_blank" rel="noopener">ArtStation</a></td></tr>
+    <tr><td>Yefim Kligerman</td><td>Concept Artist</td><td>Peer level. <a href="https://www.artstation.com/yefim_kligerman" target="_blank" rel="noopener">ArtStation</a></td></tr>
+  </table>
+  <p class="warnline">Raf Grassetti, the God of War Art Director whose name dominates search results, <b>left in May 2023</b> for Naughty Dog. Don't reference him as current. No successor AD has been publicly announced.</p>
+</div>
+
+<div class="studio" data-ind="games">
+  <h2>Bonfire Studios</h2>
+  <p class="role"><b>Live role:</b> Character Concept Artist (Senior/Principal) — Irvine, hybrid · $174,800–$221,817</p>
+  <p class="slabel">2nd-degree searches</p>
+  <div class="searches" data-co="Bonfire Studios"></div>
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Why they matter</th></tr>
+    <tr><td>Nick Carpenter</td><td>Co-founder</td><td>Former <b>VP of Art &amp; Cinematic Development at Blizzard</b> (Warcraft III, WoW, StarCraft II, Diablo III). This is the studio's entire art DNA. Writes publicly at <a href="https://blog.bonfirestudios.com" target="_blank" rel="noopener">blog.bonfirestudios.com</a></td></tr>
+    <tr><td>Rob Pardo</td><td>Co-founder / CEO</td><td>Ex-Blizzard Chief Creative Officer.</td></tr>
+    <tr><td>Shannon Studstill</td><td>Studio &amp; Operations Leader</td><td>Former head of Santa Monica Studio — a bridge between two studios on this list.</td></tr>
+    <tr><td>Courtney Bogaard</td><td>Head of People</td><td>Closest thing to a public hiring-side contact, though not art-specific.</td></tr>
+  </table>
+  <p class="none">No Art Director or concept lead is publicly named. Bonfire's About page deliberately shows team photos with no names — this studio is culturally private about individual credits. Treat as apply-through-the-front-door.</p>
+</div>
+
+<div class="studio" data-ind="games">
+  <h2>Obsidian Entertainment</h2>
+  <p class="role"><b>Live role:</b> Senior Concept Artist (Contract) — remote US · $60–64/hr</p>
+  <p class="slabel">2nd-degree searches</p>
+  <div class="searches" data-co="Obsidian Entertainment"></div>
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Why they matter</th></tr>
+    <tr><td>Mitch Aseltine</td><td>Senior Concept Artist II</td><td>The most directly relevant peer-level contact — same title as the opening.</td></tr>
+    <tr><td>Hannah Kennedy</td><td>Art Director</td><td>Art leadership.</td></tr>
+    <tr><td>Matt Hansen</td><td>Art Director, Avowed</td><td>Publicly interviewed on Avowed's art direction. <span class="tag warn">Reference craft only</span> — he's been the subject of unrelated online controversy; steer entirely clear of that coverage.</td></tr>
+  </table>
+  <p class="warnline">Volatility flag: Obsidian was hit by Xbox layoffs affecting ~25% of staff in 2025, and a July 2026 report says the Avowed sequel was cancelled in favor of a new Fallout game. Weight effort accordingly — the contract role is still worth taking, but don't over-invest in relationship-building here.</p>
+</div>
+
+<div class="studio" data-ind="games">
+  <h2>Mob Entertainment</h2>
+  <p class="role"><b>Live role:</b> 2D Art Lead — remote US · $132,000–$169,000</p>
+  <p class="slabel">2nd-degree searches</p>
+  <div class="searches" data-co="Mob Entertainment"></div>
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Why they matter</th></tr>
+    <tr><td>Seth Belanger</td><td>Chief Creative Officer</td><td><b>The art/creative decision-maker.</b> Studio describes him as the creative force behind Poppy Playtime and all Mob content.</td></tr>
+    <tr><td>George Krstic</td><td>Sr Director, Creative Development</td><td>Hired Apr 2025. Star Wars: The Clone Wars with Lucas, League of Legends, D&amp;D, Overwatch and WoW cinematics. Deep concept-art-adjacent network.</td></tr>
+    <tr><td>Zach Belanger</td><td>Co-founder &amp; CEO</td><td>Small studio — the CEO is reachable.</td></tr>
+  </table>
+  <p class="none">No named Art Director yet — young, fast-scaling studio whose art leads aren't publicly credited. That cuts both ways: less to research, but a smaller org where a good approach lands.</p>
+</div>
+
+<div class="studio" data-ind="games">
+  <h2>NetEase Games</h2>
+  <p class="role"><b>Live role:</b> Senior/Lead Character Concept Artist (Stylized) — US-remote eligible</p>
+  <p class="slabel">2nd-degree searches</p>
+  <div class="searches" data-co="NetEase Games"></div>
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Why they matter</th></tr>
+    <tr><td>Gez Fry</td><td>Executive Art Director, Art Design Center</td><td>Leads the org this role sits under. London-based, not NA. Publicly visible illustrator: <a href="https://www.behance.net/gezfry" target="_blank" rel="noopener">Behance</a></td></tr>
+    <tr><td>Dino Ma</td><td>Art Director, Marvel Rivals</td><td>Publicly interviewed on the comic-book visual style. China team, not NA — reference point rather than contact.</td></tr>
+  </table>
+  <p class="none">No verifiable art leadership at NetEase North America. The role sits in "Art Design Dept. 1" and reports to unnamed art managers. The brief benchmarks against Valorant and Fortnite — tailor the portfolio to that, since there's no relationship path here.</p>
+</div>
+
+<h2 class="group-h">Animation studios</h2>
+
+<div class="studio" data-ind="animation">
+  <h2>Sony Pictures Animation <span class="tag hot">Most named leadership</span></h2>
+  <p class="role"><b>Live roles:</b> Visual Development Artist · Character Designer — LA/Culver City, TAG union</p>
+  <p class="slabel">2nd-degree searches</p>
+  <div class="searches" data-co="Sony Pictures Animation"></div>
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Why they matter</th></tr>
+    <tr><td>Mingjue Helen Chen</td><td>Production Designer, KPop Demon Hunters</td><td>Designed the studio's biggest recent hit. Major visdev name.</td></tr>
+    <tr><td>Ami Thompson</td><td>Art Director, KPop Demon Hunters</td><td>Same production.</td></tr>
+    <tr><td>Richard Daskas</td><td>Art Director</td><td>Named on the official studio roster.</td></tr>
+    <tr><td>Wendell Dalit</td><td>Art Director</td><td>Named on the official studio roster.</td></tr>
+    <tr><td>Dean Gordon</td><td>Art Director</td><td>Named on the official studio roster.</td></tr>
+    <tr><td>Patrick O'Keefe</td><td>Production Designer</td><td>Named on the official studio roster.</td></tr>
+    <tr><td>Angela Sung</td><td>Production Designer</td><td>Has a public <a href="https://www.sonypicturesanimation.com/our-team/artists/angela-sung" target="_blank" rel="noopener">studio artist page</a>.</td></tr>
+  </table>
+  <p class="warnline">SPA explicitly does <b>not</b> give individual portfolio feedback or studio tours, so cold submission is low-yield. The two real doors: (1) their <b>Visual Development Apprenticeship runs through TAG Local 839</b>, year-round on a project basis; (2) follow <b>@SonyAnimRecruit</b> on X, their stated recruiting channel. Full roster: <a href="https://www.sonypicturesanimation.com/our-team" target="_blank" rel="noopener">sonypicturesanimation.com/our-team</a></p>
+</div>
+
+<div class="studio" data-ind="animation">
+  <h2>Netflix Animation</h2>
+  <p class="role"><b>Live roles:</b> Visual Development Artist · Character Designer · Art Director (Ink) — LA, onsite</p>
+  <p class="slabel">2nd-degree searches</p>
+  <div class="searches" data-co="Netflix Animation"></div>
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Why they matter</th></tr>
+    <tr><td>Hannah Minghella</td><td>Head of Netflix Animation Studios</td><td>Named June 22, 2026 — new leadership, 1,000+ employees across Burbank, Vancouver, Sydney. Reports to Dan Lin.</td></tr>
+    <tr><td>Steve Pilcher</td><td>Production Designer, In Your Dreams</td><td>Ex-Pixar, major visdev name. Production-level art leadership.</td></tr>
+    <tr><td>John Derderian</td><td>VP, Animation Series</td><td>Series-side decision-maker.</td></tr>
+    <tr><td>Traci Balthazor</td><td>VP, Animation Film Production</td><td>Feature-side.</td></tr>
+  </table>
+  <p class="none">Netflix Animation's publicly-named layer is executive, not art-departmental — art leadership is credited per-production, often at partner studios (Sony Imageworks, Animal Logic, Kuku). They sponsor LightBox Expo, which is the accessible surface.</p>
+  <p class="warnline">Reminder: all four Ink roles require familiarity with AI-assisted and generative AI creative workflows.</p>
+</div>
+
+<div class="studio" data-ind="animation">
+  <h2>Skydance Animation</h2>
+  <p class="role"><b>Live roles:</b> Visual Development Artist · Character Designer · Costume Designer · Art Director — Santa Monica, TAG union</p>
+  <p class="slabel">2nd-degree searches</p>
+  <div class="searches" data-co="Skydance Animation"></div>
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Why they matter</th></tr>
+    <tr><td>John Lasseter</td><td>Head of Skydance Animation</td><td>Confirmed continuing post-Paramount merger (Aug 2025).</td></tr>
+    <tr><td>Holly Edwards</td><td>President</td><td></td></tr>
+    <tr><td>Bruce Anderson</td><td>Head of Production</td><td>Hired May 2024.</td></tr>
+    <tr><td>Brian Pimental</td><td>Head of Story, Spellbound</td><td>Production-level creative.</td></tr>
+  </table>
+  <p class="none">No Art Director, Production Designer, or Head of Visual Development is publicly named — Skydance's own Teams page lists no animation art staff. Two ways names will surface: Brad Bird's <b>Ray Gunn</b> features at Annecy 2026 with new concept art (reveals usually carry artist credits), and <i>The Art and Making of Spellbound</i> credits the visdev team by name.</p>
+  <p class="warnline">Shane Prigmore, who shows up in search results as SVP Development, <b>left in June 2023</b> for Warner Bros. Pictures Animation.</p>
+</div>
+
+<h2 class="group-h">Where to actually meet these people</h2>
+
+<div class="callout">
+  <h3>LightBox Expo 2026 — Oct 23–25, Pasadena Convention Center</h3>
+  <p><b>The event for this exact target.</b> Sponsors include Sony Pictures Animation, Netflix Animation, Disney, Pixar, DreamWorks. Artists sell at tables and the norm is that working professionals expect to talk to attendees — it's the least awkward networking environment in the industry. The Concept Art Awards ceremony runs inside it on Oct 24.</p>
+  <p>Note: the official site lists Oct 23–25 while a Visit Pasadena release says Oct 24–26. Trust the official site and confirm at purchase. <a href="https://www.lightboxexpo.com" target="_blank" rel="noopener">lightboxexpo.com</a></p>
+</div>
+
+<div class="callout">
+  <h3>CTN Animation Expo — Nov 19–22, 2026, Burbank Airport Marriott</h3>
+  <p><b>"Career Camp" — directors review portfolios, sign-ups are onsite only, no advance registration.</b> Arrive early on day one. This is the more career-services-oriented of the two LA animation cons; LightBox is more community/inspiration. Early bird $149 for 3 days, $59 single day. <a href="https://www.ctn-events.com/ctnx2026" target="_blank" rel="noopener">ctn-events.com/ctnx2026</a></p>
+</div>
+
+<div class="callout">
+  <h3>Gallery Nucleus, Alhambra — check monthly</h3>
+  <p>Not a conference, but arguably the highest networking density per hour in LA animation art. Hosts studio art-book launches and panels — including <i>The Art of KPop Demon Hunters</i> exhibition with the Sony Pictures Animation team. Openings are free or cheap and the artists are physically in the room. <a href="https://www.gallerynucleus.com/events" target="_blank" rel="noopener">gallerynucleus.com/events</a></p>
+</div>
+
+<div class="callout">
+  <h3>The rest, ranked</h3>
+  <ul>
+    <li><b>TAG Local 839</b> (Burbank) — Sony Pictures Animation runs its visdev apprenticeships <i>through</i> the Guild. A named pathway that bypasses the cold-portfolio pile. <a href="https://animationguild.org/about-the-guild/calendar/" target="_blank" rel="noopener">Public calendar</a></li>
+    <li><b>XDS (External Development Summit)</b> — where Riot's Ben Skutt speaks. Less crowded than GDC and disproportionately populated by the people who <i>commission</i> concept art. <a href="https://xdsummit.com" target="_blank" rel="noopener">xdsummit.com</a></li>
+    <li><b>Women in Animation mentorship program</b> — multiple application rounds per year, LA-headquartered. Round 1 2026 has passed; watch for the next. <a href="https://womeninanimation.org" target="_blank" rel="noopener">womeninanimation.org</a></li>
+    <li><b>Women in Games</b> — free monthly online socials and a free global Careers Expo. <a href="https://www.womeningames.org" target="_blank" rel="noopener">womeningames.org</a></li>
+    <li><b>ArtStation Challenges</b> — studio-sponsored, judged by working art directors, winners get real visibility. <a href="https://www.artstation.com/challenges" target="_blank" rel="noopener">artstation.com/challenges</a></li>
+    <li><b>GDC 2027</b> — Mar 1–5, 2027, Moscone Center. Historically hosts studio portfolio reviews. Relevant for the games half of the list. GDC 2026 has passed.</li>
+    <li><b>Riot Worlds Artist Alley</b> — Nov 12–14, 2026, NYC. Free to apply but the deadline was Aug 7, 2026 (yesterday). Flag for 2027.</li>
+  </ul>
+</div>
+
+<footer>
+  Search links are pre-filtered to 1st- and 2nd-degree connections via LinkedIn's <code>network=["F","S"]</code> parameter. If a link opens unfiltered, LinkedIn changed its URL schema — set Connections to 1st + 2nd manually in the left filter rail. Named people are verified from public professional sources only: studio rosters, published credits, ArtStation Art Blasts, conference programs, and trade press. ArtStation Art Blast rosters are point-in-time snapshots of shipped projects — confirm current employer before referencing anyone. No private or personal contact information is included here.
+</footer>
+
+</div>
+
+<script>
+const N = '&network=%5B%22F%22%2C%22S%22%5D';
+const base = 'https://www.linkedin.com/search/results/people/?keywords=';
+const QUERIES = [
+  ["Art Director",            "art director"],
+  ["Concept Artist",          "concept artist"],
+  ["Visual Development",      "visual development artist"],
+  ["Character Designer",      "character designer"],
+  ["Art Recruiter",           "art recruiter talent acquisition"],
+  ["Everyone at company",     ""]
+];
+document.querySelectorAll('.searches').forEach(box => {
+  const co = box.dataset.co;
+  QUERIES.forEach(([label, q]) => {
+    const kw = encodeURIComponent((co + ' ' + q).trim());
+    const a = document.createElement('a');
+    a.href = base + kw + N;
+    a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = label;
+    box.appendChild(a);
+  });
+});
+
+const btn = document.getElementById("themeBtn");
+btn.addEventListener("click", () => {
+  const dark = document.documentElement.getAttribute("data-theme")==="dark";
+  document.documentElement.setAttribute("data-theme", dark ? "light":"dark");
+  btn.textContent = dark ? "Dark mode" : "Light mode";
+});
+if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches){
+  document.documentElement.setAttribute("data-theme","dark");
+  btn.textContent = "Light mode";
+}
+</script>
+</body>
+</html>
