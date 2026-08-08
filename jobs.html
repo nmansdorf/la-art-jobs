@@ -68,6 +68,7 @@ input[type=search]{min-width:190px}
 .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--s1)}
 .card[data-ind="animation"]::before{background:var(--s2)}
 .card[data-ind="games"]::before{background:var(--s1)}
+.card[data-ind="adjacent"]::before{background:var(--s7)}
 .card .studio{font-size:12px;color:var(--ink-2);font-weight:600;letter-spacing:0.01em}
 .card .title{font-size:15px;font-weight:600;letter-spacing:-0.01em;line-height:1.3}
 .card .meta{font-size:12.5px;color:var(--ink-2);display:flex;flex-direction:column;gap:3px}
@@ -118,7 +119,7 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--grid);color:v
 <header>
   <div>
     <h1>LA Concept &amp; 2D Art Openings</h1>
-    <p class="sub">Games + animation · Los Angeles, remote &amp; freelance · Verified live August 8, 2026</p>
+    <p class="sub">Games, animation &amp; adjacent industries · Los Angeles, remote &amp; freelance · Verified live August 8, 2026</p>
   </div>
   <button class="ghost" id="themeBtn">Dark mode</button>
 </header>
@@ -128,12 +129,12 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--grid);color:v
   <div class="tile"><div class="accent" style="background:var(--s3)"></div><div class="v" id="t-fit">9</div><div class="l">Strong fit for 5–10 yrs</div></div>
   <div class="tile"><div class="accent" style="background:var(--s2)"></div><div class="v" id="t-la">13</div><div class="l">In the LA area</div></div>
   <div class="tile"><div class="accent" style="background:var(--s7)"></div><div class="v" id="t-rem">4</div><div class="l">Fully remote / freelance</div></div>
-  <div class="tile"><div class="accent" style="background:var(--s4)"></div><div class="v">$104k–$233k</div><div class="l">Posted salary span</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s4)"></div><div class="v">$75k–$233k</div><div class="l">Posted salary span</div></div>
 </div>
 
 <div class="filters">
   <label for="f-ind">Industry</label>
-  <select id="f-ind"><option value="">All</option><option value="games">Games</option><option value="animation">Animation</option></select>
+  <select id="f-ind"><option value="">All</option><option value="games">Games</option><option value="animation">Animation</option><option value="adjacent">Adjacent industries</option></select>
 
   <label for="f-loc">Location</label>
   <select id="f-loc"><option value="">All</option><option value="la">LA area</option><option value="remote">Remote</option></select>
@@ -311,6 +312,57 @@ const JOBS = [
   fit:"reach", note:"Below her level, but another route onto the Skydance visdev team.",
   url:"https://jobs.lever.co/skydance", group:"second"},
 
+
+ // ===== ADJACENT INDUSTRIES =====
+ {studio:"Age of Learning (ABCmouse)", title:"2D Game Artist (Mid–Senior)", ind:"adjacent", loc:"la", locText:"Glendale · Hybrid, 3 days onsite",
+  type:"staff", typeText:"Full-time", exp:"6+ yrs 2D game art, illustration or UI", pay:"$110,000 – $135,000", focus:"both",
+  fit:"fit", note:"Characters, environments and UI. Pays more than most of the animation roles on this list and nobody from concept art applies here. Gate is a cute, stylized, family-friendly portfolio plus Rive or Spine — 4–8 weeks of targeted work.",
+  warn:"Company states it embraces AI tools and asks candidates directly about comfort using them.",
+  url:"https://job-boards.greenhouse.io/ageoflearninginc/jobs/4338304009", group:"adjacent"},
+
+ {studio:"Mattel", title:"Lead Artist — Digital Gaming", ind:"adjacent", loc:"la", locText:"El Segundo",
+  type:"staff", typeText:"Full-time", exp:"5+ yrs as Lead Artist or above in mobile games", pay:"$96,800 – $137,000", focus:"both",
+  fit:"fit", note:"Asks for a BA in illustration, graphic design or fine arts. This is a concept artist job wearing a toy company's badge — directs external dev partners, ships mobile titles.",
+  warn:"The posting contradicts itself on pay: header says $115,000–$144,000, body says $96,800–$137,000. Worth clarifying early.",
+  url:"https://jobs.mattel.com/en/job/el-segundo/lead-artist-digital-gaming/2015/94344374656", group:"adjacent"},
+
+ {studio:"Mattel", title:"Lead Designer — Dolls Style Guide", ind:"adjacent", loc:"la", locText:"El Segundo",
+  type:"staff", typeText:"Full-time", exp:"7+ yrs graphic design / style guide development", pay:"$115,000 – $140,000", focus:"character",
+  fit:"fit", note:"Style-guide work is character-sheet and IP-bible work by another name, and this role art-directs external illustrators. Gap is Illustrator/InDesign fluency and print production literacy — weeks, not years.",
+  url:"https://jobs.mattel.com/en/job/el-segundo/lead-designer-consumer-products-dolls-style-guide/2015/97760454448", group:"adjacent"},
+
+ {studio:"Mattel", title:"Sr Brand Designer — Brand Creative, Games", ind:"adjacent", loc:"la", locText:"El Segundo",
+  type:"staff", typeText:"Full-time", exp:"5–7+ yrs graphic / brand design", pay:"$95,000 – $119,000", focus:"both",
+  fit:"fit", note:"Key art development and brand systems for UNO, Pictionary, Phase 10 and Magic 8 Ball. Posted August 7 — one of the freshest listings on this whole tracker.",
+  url:"https://jobs.mattel.com/en/job/el-segundo/sr-brand-designer-brand-creative-games/2015/98892692704", group:"adjacent"},
+
+ {studio:"Sphere Studios", title:"Art Director (Expression of Interest)", ind:"adjacent", loc:"la", locText:"Burbank",
+  type:"contract", typeText:"Temporary ~12 weeks, part-time", exp:"5+ yrs design and art direction in a studio or agency", pay:"$4,500 – $5,000/week", focus:"both",
+  fit:"fit", note:"Immersive content for the Sphere venues. Highest weekly rate anywhere on this tracker. Wants an experiential design background plus advanced Photoshop, Illustrator and After Effects.",
+  url:"https://www.sphereentertainmentco.com/jobs/expression-of-interest-art-director-burbank-ca/?gh_jid=5197060007", group:"adjacent"},
+
+ {studio:"Sphere Studios", title:"Designer (Expression of Interest)", ind:"adjacent", loc:"la", locText:"Burbank",
+  type:"contract", typeText:"Temporary ~12 weeks", exp:"3–5+ yrs in a fast-paced creative production studio", pay:"$3,000 – $3,400/week", focus:"both",
+  fit:"fit", note:"The lower rung of the same Sphere pipeline. 3D modelling or animation preferred but not required.",
+  url:"https://www.sphereentertainmentco.com/jobs/expression-of-interest-designer-burbank-ca/?gh_jid=5197043007", group:"adjacent"},
+
+ {studio:"BRC Imagination Arts", title:"Concept Illustrator (open application)", ind:"adjacent", loc:"la", locText:"Burbank",
+  type:"staff", typeText:"Talent pipeline — always open", exp:"Portfolio-driven", pay:"Not posted", focus:"environment",
+  fit:"fit", note:"Themed entertainment and museum design — Heineken Experience, World of Coca-Cola, Kennedy Space Center. Their careers page explicitly lists \"Concept Illustrators\" as a category, so this is a warm door with no posting required.",
+  warn:"Ownership transition completed June 2026 — new co-owners across the creative leadership, which usually means fresh hiring.",
+  url:"https://brcweb.com/careers/", group:"adjacent"},
+
+ {studio:"MGA Entertainment", title:"Sr. Designer — Diecast Graphics", ind:"adjacent", loc:"la", locText:"Los Angeles / Chatsworth",
+  type:"staff", typeText:"Full-time", exp:"5+ yrs professional graphic design", pay:"$75,000 – $100,000", focus:"environment",
+  fit:"fit", note:"Livery and deco design on toy cars. Needs Illustrator plus KeyShot and genuine car-culture fluency — learnable in months.",
+  warn:"Posted February 27, 2026 — roughly five months stale. Confirm it's still real before investing time.",
+  url:"https://careers.mgae.com/jobs/sr-designer-diecast-graphics-9203579173043_1/", group:"adjacent"},
+
+ {studio:"Spin Master", title:"Senior Designer — Gabby's Dollhouse (Contract)", ind:"adjacent", loc:"la", locText:"Los Angeles · In-office 4 days",
+  type:"contract", typeText:"Contract", exp:"Senior level", pay:"$40 – $45/hr", focus:"character",
+  fit:"reach", note:"Involves actual character sketching alongside 2D renderings and specs. Rate is below her level, but it's a live LA toy-design credit on a major preschool IP.",
+  url:"https://spinmaster.wd3.myworkdayjobs.com/en-US/SpinMaster_Careers", group:"adjacent"},
+
  // ===== REMOTE / FREELANCE =====
  {studio:"Obsidian Entertainment", title:"Senior Concept Artist (Contract)", ind:"games", loc:"remote", locText:"Fully remote (US)",
   type:"contract", typeText:"6-month contract, extension possible", exp:"6+ yrs game development", pay:"$60 – $64/hr", focus:"both",
@@ -339,9 +391,10 @@ const JOBS = [
 ];
 
 const GROUPS = [
-  {key:"top",    label:"Apply first — strongest matches"},
-  {key:"second", label:"Also worth applying"},
-  {key:"remote", label:"Remote &amp; freelance"}
+  {key:"top",      label:"Apply first — strongest matches"},
+  {key:"second",   label:"Also worth applying"},
+  {key:"adjacent", label:"Adjacent industries — toys, edtech, themed entertainment"},
+  {key:"remote",   label:"Remote &amp; freelance"}
 ];
 const FITLABEL = {fit:"Strong fit", stretch:"Stretch", reach:"Below level"};
 
