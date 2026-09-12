@@ -82,10 +82,10 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--grid);color:v
 </header>
 
 <div class="tiles">
-  <div class="tile"><div class="accent" style="background:var(--s1)"></div><div class="v">29</div><div class="l">Verified open roles</div></div>
-  <div class="tile"><div class="accent" style="background:var(--s3)"></div><div class="v">21</div><div class="l">Strong fit, 5–10 yrs</div></div>
-  <div class="tile"><div class="accent" style="background:var(--s2)"></div><div class="v">18</div><div class="l">Studios mapped</div></div>
-  <div class="tile"><div class="accent" style="background:var(--s4)"></div><div class="v">70+</div><div class="l">Named art leads</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s1)"></div><div class="v">35</div><div class="l">Verified open roles</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s3)"></div><div class="v">26</div><div class="l">Strong fit, 5–10 yrs</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s2)"></div><div class="v">20</div><div class="l">Studios mapped</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s4)"></div><div class="v">70+</div><div class="l">Named art leads</div></div></div>
 </div>
 
 <div class="cards">
@@ -102,18 +102,19 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--grid);color:v
 </div>
 
 <div class="alert">
-  <h3>⏰ Nearest deadline — Aug 17, 2026, 9:00am PT</h3>
-  <p>Concept Art Awards submissions close. Judges are working art directors at the studios on this list, and the ceremony runs inside LightBox Expo in October. Eligible work: released Aug 19, 2025 – Aug 17, 2026. <a href="https://www.conceptartassociation.com/caa-2026" target="_blank" rel="noopener">Submit →</a></p>
+  <h3>⏰ Two live deadlines</h3>
+  <p><b>LA Fall Preview opens Sept 14</b> — free, open to all, at The Toy Building in El Segundo, running through Sept 25. And the <b>LightBox Expo portfolio review lottery</b> has still not opened; based on prior years it should appear between late September and the first week of October. Buy the 3-day badge now so she's eligible the moment it does.</p>
 </div>
 
 <section class="body">
-  <h2 class="sec">How this was built</h2>
-  <p>Over fifty studio career pages were checked directly. A role only appears here if its own job board loaded <b>and</b> an application form rendered — postings that merely appear in search results were excluded and listed separately as dead.</p>
-  <p>That distinction turned out to matter more than expected. The Naughty Dog Senior Concept Artist listing that ranks well on Google was removed in <b>July 2025</b>. Seven PlayStation-hosted concept postings have dead application IDs. Six Blizzard concept requisitions return HTTP 410. A market that looks moderately active in search results is considerably thinner in reality.</p>
+  <h2 class="sec">How this was built, and what decayed</h2>
+  <p>Over fifty studio career pages were checked directly, twice — first on August 8, then re-verified on September 12. A role appears here only if its own job board loaded <b>and</b> an application form rendered.</p>
+  <p><b>Twelve of the twenty-nine roles from the August sweep were dead five weeks later — 41% attrition.</b> That number is the most useful thing on this site: assume any listing older than about four weeks is gone until proven otherwise.</p>
+  <p>Worse, <b>five of those dead postings still rendered complete, working application forms.</b> Checking the page alone would have produced a 60% false-positive rate. The only reliable tests are the underlying ATS APIs, which return clean 404s on dead requisitions.</p>
   <ul>
-    <li><b>Disney Animation, Pixar, Nickelodeon, Warner Bros. Animation, Paramount Animation, DreamWorks, Blizzard, Naughty Dog, Insomniac, Activision, 2K and Scopely</b> currently have zero open 2D concept roles.</li>
-    <li><b>Games in SoCal are still contracting</b> — Riot cut ~80 from 2XKO in February 2026, Wildlight was gutted the same month, Lightspeed LA cut ~80 in July. Over half of global games layoffs have been in California.</li>
-    <li><b>Animation has one real tailwind.</b> California's expanded film and TV tax credit added animated features and series for the first time — $6.6B in first-year production spend. The Film Commission's credit award announcements are the clearest leading indicator of which LA studios staff up next.</li>
+    <li><b>The Paramount–Warner Bros. Discovery merger did not close.</b> It's frozen until a March 2027 antitrust trial after twelve state attorneys general and the WGA sued. The projected job cuts are deferred, not cancelled — but merger limbo means Warner Bros. Animation, Cartoon Network and Nickelodeon are paralysed rather than hiring.</li>
+    <li><b>Disney Television Animation posted three art leads on August 31</b> — Character Design, Background Paint and Location Design, all Glendale, all $74.68–$82.15/hr, all asking 5–7 years. The best-matched cluster to appear in either sweep.</li>
+    <li><b>Walt Disney Animation, Pixar, Nickelodeon, Warner Bros. Animation, DreamWorks, Blizzard, Naughty Dog, Insomniac, Activision, Bungie and 2K</b> still have zero open 2D concept roles. Every indexed concept requisition at Activision and Blizzard returns HTTP 410 Gone.</li>
   </ul>
 </section>
 
@@ -136,7 +137,7 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--grid);color:v
 </section>
 
 <footer>
-  Verified August 8, 2026. Salary figures are studios' own posted ranges under California pay-transparency law. Named individuals come from public professional sources only — studio rosters, published credits, ArtStation Art Blasts, conference programs and trade press. No private contact information appears anywhere on this site. Re-verify postings before applying; they move fast.
+  First verified August 8, 2026; fully re-verified September 12, 2026. Salary figures are studios' own posted ranges under California pay-transparency law. Named individuals come from public professional sources only — studio rosters, published credits, ArtStation Art Blasts, conference programs and trade press. No private contact information appears anywhere on this site. Re-verify postings before applying; they move fast.
 </footer>
 
 </div>

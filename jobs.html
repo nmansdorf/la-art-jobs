@@ -119,7 +119,7 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--grid);color:v
 <header>
   <div>
     <h1>LA Concept &amp; 2D Art Openings</h1>
-    <p class="sub">Games, animation &amp; adjacent industries · Los Angeles, remote &amp; freelance · Verified live August 8, 2026</p>
+    <p class="sub">Games, animation &amp; adjacent industries · Los Angeles, remote &amp; freelance · <b>Re-verified live September 12, 2026</b></p>
   </div>
   <button class="ghost" id="themeBtn">Dark mode</button>
 </header>
@@ -129,7 +129,7 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--grid);color:v
   <div class="tile"><div class="accent" style="background:var(--s3)"></div><div class="v" id="t-fit">9</div><div class="l">Strong fit for 5–10 yrs</div></div>
   <div class="tile"><div class="accent" style="background:var(--s2)"></div><div class="v" id="t-la">13</div><div class="l">In the LA area</div></div>
   <div class="tile"><div class="accent" style="background:var(--s7)"></div><div class="v" id="t-rem">4</div><div class="l">Fully remote / freelance</div></div>
-  <div class="tile"><div class="accent" style="background:var(--s4)"></div><div class="v">$75k–$233k</div><div class="l">Posted salary span</div></div>
+  <div class="tile"><div class="accent" style="background:var(--s4)"></div><div class="v">$70k–$233k</div><div class="l">Posted salary span</div></div>
 </div>
 
 <div class="filters">
@@ -137,7 +137,7 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--grid);color:v
   <select id="f-ind"><option value="">All</option><option value="games">Games</option><option value="animation">Animation</option><option value="adjacent">Adjacent industries</option></select>
 
   <label for="f-loc">Location</label>
-  <select id="f-loc"><option value="">All</option><option value="la">LA area</option><option value="remote">Remote</option></select>
+  <select id="f-loc"><option value="">All</option><option value="la">LA area</option><option value="remote">Remote</option><option value="other">Outside LA</option></select>
 
   <label for="f-fit">Fit</label>
   <select id="f-fit"><option value="">All</option><option value="fit">Strong fit</option><option value="stretch">Stretch</option><option value="reach">Below level</option></select>
@@ -154,15 +154,31 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--grid);color:v
 
 <div id="board"></div>
 
+<h2 class="group-h">What changed since August 8</h2>
+
+<div class="ctx" style="border-left:3px solid var(--critical)">
+  <h3>41% of the August list is already dead</h3>
+  <p>Twelve of the twenty-nine roles verified on August 8 had closed by September 12 — five weeks. That decay rate is the single most useful thing this tracker measures: <b>assume any listing older than about four weeks is gone until an application form proves otherwise.</b></p>
+  <p>A methodological note that matters if you ever re-check this yourself: <b>five of the dead postings still rendered complete, working application forms.</b> Skydance's Lever pages and Sony's Greenhouse pages both serve fully-functional stale detail pages with live Apply buttons. The only reliable tests are the ATS APIs — <code>api.lever.co/v0/postings/&lt;company&gt;?mode=json</code> and <code>boards-api.greenhouse.io/v1/boards/&lt;token&gt;/jobs/&lt;id&gt;</code>, which 404 cleanly on dead reqs. Checking the rendered page alone would have produced a 60% false-positive rate.</p>
+  <p>Conversely, Greenhouse's <i>board index</i> is stale-cached in the other direction — Sony's Story Artist role is live but doesn't appear in their own board listing. Absence from a board is not proof of death either.</p>
+</div>
+
+<div class="ctx" style="border-left:3px solid var(--s3)">
+  <h3>The good news: Disney Television Animation is hiring</h3>
+  <p>DTVA posted <b>three art leads on the same day, August 31</b> — Character Design, Background Paint, and Location Design — all in Glendale, all at $74.68–$82.15/hr, all asking 5–7 years. That's a coordinated staffing wave for a new series and the best-matched cluster to her profile that has appeared in either sweep. Treat the three as a single application push.</p>
+  <p>Riot also added a <b>Senior Illustration Artist for Riftbound at $150,000–$209,600 against a 6+ year bar</b> — the first time a role at that pay level has been inside her experience band rather than above it.</p>
+</div>
+
 <h2 class="group-h">Context you should know</h2>
 
 <div class="ctx">
   <h3>The market, honestly</h3>
-  <p>This is a thin market and the list above is short because it's accurate, not because the search was shallow. My agents checked 50+ studios. Disney Animation, Pixar, Nickelodeon, Warner Bros. Animation, Paramount Animation, DreamWorks, Blizzard, Naughty Dog, Insomniac, Activision, 2K and Scopely currently have <b>zero</b> open 2D concept/design roles.</p>
+  <p>Still thin. Across both sweeps, 50+ studios checked: Walt Disney Animation, Pixar, Nickelodeon, Warner Bros. Animation, Paramount Animation, DreamWorks, Blizzard, Naughty Dog, Insomniac, Activision, Bungie, 2K and Scopely have <b>zero</b> open 2D concept roles. Every indexed concept requisition at Activision and Blizzard returns HTTP 410 Gone.</p>
   <ul>
-    <li><b>Games in SoCal are still cutting.</b> Riot cut ~80 from the 2XKO team (Feb 2026), Wildlight was gutted (Feb 2026), Lightspeed LA cut ~80 (Jul 2026). Over half of global games layoffs have been in California.</li>
-    <li><b>Animation has one real tailwind.</b> California's expanded film/TV tax credit added animated features and series for the first time — $6.6B in first-year production spend, ~35,000 jobs. Track the California Film Commission credit award announcements; those projects are legally committed to LA production and are the clearest leading indicator of who staffs up next.</li>
-    <li><b>The Paramount–Warner Bros. Discovery close (expected Q3 2026)</b> is the biggest near-term risk to LA animation headcount — analysts project 6,000+ cuts.</li>
+    <li><b>The Paramount–Warner Bros. Discovery merger did not close — it's frozen until a March 2027 antitrust trial.</b> Twelve state attorneys general and the WGA sued; Paramount agreed to pause. This is the biggest correction to the August picture. The projected job cuts (LA County estimates 4,500 local film/TV jobs, up to 15,567 overall) are <b>deferred, not cancelled</b>. Practical read: Warner Bros. Animation, Cartoon Network and Nickelodeon aren't cutting this autumn, but merger limbo produces hiring freezes rather than layoffs — treat all three as paralysed rather than dangerous, and spend the energy elsewhere.</li>
+    <li><b>No new major LA layoffs were announced between August 8 and September 12.</b> An unusually quiet five weeks. The most recent cuts all pre-date the window: Disney/Pixar (~150 at Pixar, July 21), Sony Pictures (April), Bad Robot (April, relocating to New York), Riot (26 in April, ~80 in February).</li>
+    <li><b>Pixar's structural shift is worth internalising.</b> Future features are capped at 16,500 person-weeks of labour, down from 18,500–20,000+. That's a permanent 15–20% headcount reduction per film at the most prestigious animation employer in the country, and peers benchmark against it.</li>
+    <li><b>The tax credit remains the one real tailwind.</b> Animated projects with confirmed funded LA production: <b>DONKEY</b> (DreamWorks), <b>Hexed</b> (Disney), an untitled Pixar feature, <b>STEWIE</b> (20th Television Animation), <b>President Curtis</b> (Adult Swim) and <b>The Simpsons Movie 2</b>. No new awards since August 10, and that round was all live-action. Those six titles are the clearest list of who will staff up next.</li>
   </ul>
 </div>
 
@@ -174,6 +190,7 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--grid);color:v
     <li>After 30 days of employment, you're required to join.</li>
     <li>Initiation fee = two weeks' minimum scale (~<b>$5,200</b> for a journey Designer at 2026 rates) + $100 IATSE fee. No-interest payment plans available.</li>
     <li>Journey-level scale as of Aug 2, 2026: <b>$64.94/hr, $2,597.60/week</b> — that's the floor, not the market rate.</li>
+    <li><b>New in September:</b> DreamWorks remote workers ratified their first TAG contract, winning wage and benefit parity with onsite staff. That follows Netflix feature animators earlier in 2026 — the Guild is expanding fast, and the 2024–27 Master Agreement expires in 2027.</li>
     <li>Once in: the members-only jobs email, the TAG Availability Grid, and the <code>#looking-for-job</code> Discord (email Comms@tag839.org) are where a lot of work actually circulates. <a class="apply" href="https://animationguild.org/looking-for-work/" target="_blank" rel="noopener">animationguild.org/looking-for-work</a></li>
   </ul>
 </div>
@@ -196,17 +213,31 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--grid);color:v
 </div>
 
 <details>
-  <summary>Postings that look live in Google but are actually dead — don't waste time on these</summary>
-  <p>Search engines are still surfacing these with full descriptions and salaries. Every one was verified closed. This is a big part of why the LA market looks busier than it is.</p>
+  <summary>Closed since August 8 — twelve roles, all verified dead</summary>
+  <p>These were live five weeks ago. Most still render a working application page, so don't trust what you see.</p>
   <ul>
-    <li><b>Naughty Dog — Senior Concept Artist</b> ($143,700–$179,000). Built In LA page literally says removed July 10, <b>2025</b>. Naughty Dog has no open concept roles at all.</li>
-    <li><b>Naughty Dog / PlayStation concept postings on careers.playstation.com and sms.playstation.com</b> — seven listings (Senior Environment Concept Artist, Senior Character Concept Artist, Environment Concept Artist and others). Underlying Greenhouse IDs are dead; none appear in PlayStation's live job search.</li>
-    <li><b>EA / Respawn — Lead Concept Artist, Apex Legends</b> (req 213504). Redirects to EA's generic search; not in EA's own results.</li>
-    <li><b>Sony Pictures Animation — Background Artist, Series</b> (req 7741055003). Returns the dead-posting error signature.</li>
-    <li><b>Blizzard concept art roles</b> — six separate reqs (Lead Concept Artist, Principal Concept Artist Environment, Senior Concept Artist OW2, Senior Concept Artist Characters, Concept Artist–Storyboards, Concept Art Internship) all return HTTP 410 Gone. Blizzard's board is JS-only so this one deserves a human eyeball, but there's no evidence of anything live.</li>
-    <li><b>DreamWorks TV — Visual Development Artist</b> (3+ yrs) — posted Apr 29, 2026, filled May 4, 2026.</li>
-    <li><b>Disney TV Animation — Prop Designer</b> — 404 / removed.</li>
-    <li><b>Plumeria Studio — Stylized Character Concept Artist</b> — marked closed.</li>
+    <li><b>Skydance Animation — Visual Development Artist, Character Designer, Costume Designer.</b> All three absent from Skydance's Lever feed. The rendered pages and the EntertainmentCareers mirrors are stale. Only Art Director and the freelance 2D Effects Artist survive.</li>
+    <li><b>Sony Pictures Animation — Character Designer.</b> Clean 404 on three independent checks.</li>
+    <li><b>Respawn / EA — Concept Character Artist and Concept Hard Surface Artist.</b> The character role's own page now says "no longer accepting applications." EA's board has zero concept roles in Los Angeles — all their open concept work is Vancouver and Shanghai.</li>
+    <li><b>Bonfire Studios — Character Concept Artist (Senior/Principal).</b> Removed from their board; the $174,800–$221,817 detail page is stale.</li>
+    <li><b>Obsidian — Senior Concept Artist (Contract).</b> HTTP 410 Gone.</li>
+    <li><b>Clay Urn — Visual Development / Concept Artist.</b> Page states "This position has been closed."</li>
+    <li><b>Spin Master — Senior Designer, Gabby's Dollhouse.</b> 410 Gone.</li>
+    <li><b>Skydance — Associate Costume Designer.</b> Never existed in their ATS; it was a bad read on my part in August.</li>
+    <li><b>Disney / ESPN — Senior Concept Artist (Remote US).</b> Surfaces on aggregators dated August 20 and would have been an excellent match. Dead: the Disney URL 404s, and the surviving slug says Connecticut, so it was never remote.</li>
+  </ul>
+</details>
+
+<details>
+  <summary>Older ghosts that still rank in Google — ignore these permanently</summary>
+  <ul>
+    <li><b>Naughty Dog — Senior Concept Artist</b> ($143,700–$179,000). Removed July <b>2025</b>. Naughty Dog has 14 open roles and zero art.</li>
+    <li><b>Seven Naughty Dog / PlayStation concept listings</b> on careers.playstation.com and sms.playstation.com — dead Greenhouse IDs.</li>
+    <li><b>Activision and Blizzard — nine concept requisitions</b> across Treyarch, Overwatch 2 and World of Warcraft. Every one returns HTTP 410 Gone. Their live art roles are all 3D and technical.</li>
+    <li><b>Marvel Studios — Visual Development Artist</b> (filled Feb 2025) · <b>DreamWorks — Visual Development Artist</b> (filled Mar 2026) · <b>Nickelodeon — Character Designer</b> (two reqs, both filled).</li>
+    <li><b>Magnopus — Concept Artist, Los Angeles.</b> Circulating on mediabistro; absent from their live board.</li>
+    <li><b>Sphere — Creative Director Art &amp; Design, Graphic Designer, Senior Designer.</b> All three gone from Sphere's board; the Graphic Designer page 404s.</li>
+    <li><b>BLT Communications — Graphic Designer</b> (theatrical key art), removed Aug 2025 · <b>Live Nation / Insomniac — Senior Multimedia Designer</b>, removed June 2025 · <b>Amplify — Senior Digital Artist</b>, marked filled.</li>
   </ul>
 </details>
 
@@ -229,172 +260,204 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--grid);color:v
 
 <script>
 const JOBS = [
- // ===== LA — GAMES =====
+ // ===== GAMES & ANIMATION — APPLY FIRST =====
+ {studio:"Disney Television Animation", title:"Character Design Lead", ind:"animation", loc:"la", locText:"Glendale · Fully on-site",
+  type:"staff", typeText:"Staff · union CBA", exp:"5–7 yrs in artistic animation production", pay:"$74.68 – $82.15/hr (≈$155k–$171k)", focus:"character",
+  fit:"fit", note:"Posted Aug 31 alongside two sibling leads — DTVA is staffing a new series. Squarely in her experience band, and the best-paying animation cluster in LA right now.",
+  url:"https://www.disneycareers.com/en/job/glendale/character-design-lead-disney-television-animation/391/99997785168", group:"top"},
+
+ {studio:"Disney Television Animation", title:"Background Paint Lead", ind:"animation", loc:"la", locText:"Glendale · Fully on-site",
+  type:"staff", typeText:"Staff · union CBA", exp:"5–7 yrs in artistic animation production", pay:"$74.68 – $82.15/hr (≈$155k–$171k)", focus:"environment",
+  fit:"fit", note:"Same posting wave, same pay band. Environment-side counterpart to the Character Design Lead.",
+  url:"https://www.disneycareers.com/en/job/glendale/background-paint-lead-disney-television-animation/391/99997784928", group:"top"},
+
+ {studio:"Disney Television Animation", title:"Location Design Lead", ind:"animation", loc:"la", locText:"Glendale · Fully on-site",
+  type:"staff", typeText:"Staff · union CBA", exp:"No year count stated — bachelor's or equivalent experience", pay:"$74.68 – $82.15/hr (≈$155k–$171k)", focus:"environment",
+  fit:"fit", note:"The third of the Aug 31 trio, and the only one with no stated years requirement. Applications accepted through Dec 31.",
+  url:"https://www.disneycareers.com/en/job/glendale/location-design-lead-disney-television-animation/391/99997784960", group:"top"},
+
+ {studio:"Riot Games", title:"Senior Illustration Artist — Riftbound", ind:"games", loc:"la", locText:"Los Angeles",
+  type:"staff", typeText:"Full-time", exp:"6+ yrs in illustration or a related creative discipline", pay:"$150,000 – $209,600 + equity", focus:"both",
+  fit:"fit", note:"Card art and illustration direction for Riot's TCG. Highest-paying role on this tracker that's actually inside her experience band — the concept roles at this pay all ask 10+ years.",
+  url:"https://www.riotgames.com/en/work-with-us/job/8138239", group:"top"},
+
  {studio:"Santa Monica Studio (Sony)", title:"Sr Concept Artist, Environments", ind:"games", loc:"la", locText:"Los Angeles · Hybrid",
   type:"staff", typeText:"Full-time", exp:"3+ yrs AAA game platform experience", pay:"$120,600 – $180,800", focus:"environment",
-  fit:"fit", note:"Environments, props, color scripts, visual guides and marketing art for an unannounced PS title.",
+  fit:"fit", note:"Still live after five weeks. Environments, props, colour scripts and marketing art for an unannounced PlayStation title. Low stated bar for the pay.",
   url:"https://job-boards.greenhouse.io/sonyinteractiveentertainmentglobal/jobs/6118327004", group:"top"},
 
- {studio:"Bonfire Studios", title:"Character Concept Artist (Senior/Principal)", ind:"games", loc:"la", locText:"Irvine, CA · Hybrid",
-  type:"staff", typeText:"Full-time", exp:"Mid-level through principal — range explicitly spans both", pay:"$174,800 – $221,817", focus:"character",
-  fit:"fit", note:"Highest posted range of any role on this list. Small veteran studio (ex-Blizzard leadership).",
-  url:"https://bonfirestudios.com/work-with-us/4022147009/", group:"top"},
-
- {studio:"Respawn / EA", title:"Concept Character Artist — Apex Legends", ind:"games", loc:"la", locText:"LA–Chatsworth · Hybrid",
-  type:"staff", typeText:"Full-time", exp:"3+ yrs as a concept artist", pay:"$104,400 – $157,400", focus:"character",
-  fit:"fit", note:"Character design, cosmetics and outfits for a live-service title. Low experience bar for the pay.",
-  url:"https://jobs.ea.com/en_US/careers/JobDetail/Concept-Character-Artist-Apex-Legends/214768", group:"top"},
-
- {studio:"Respawn / EA", title:"Concept Hard Surface Artist — Apex Legends", ind:"games", loc:"la", locText:"LA–Chatsworth · Hybrid",
-  type:"staff", typeText:"Full-time", exp:"3+ yrs as a concept artist", pay:"$104,400 – $157,400", focus:"environment",
-  fit:"fit", note:"Weapons, industrial design, production-ready illustration.",
-  url:"https://jobs.ea.com/en_US/careers/JobDetail/Concept-Hard-Surface-Artist-Apex-Legends/214772", group:"top"},
-
- {studio:"Riot Games", title:"Principal Concept Artist, Environment/Character — League of Legends", ind:"games", loc:"la", locText:"Los Angeles · Onsite",
-  type:"staff", typeText:"Full-time", exp:"10+ yrs concept art for games or animation", pay:"$166,600 – $232,800 + equity", focus:"both",
-  fit:"stretch", note:"Top comp on the list but above the target band. Riot's only true 2D concept opening in LA.",
-  warn:"Riot cut ~80 from the 2XKO team in Feb 2026 — worth asking about team stability.",
-  url:"https://www.riotgames.com/en/j/8070799", group:"top"},
-
- // ===== LA — ANIMATION =====
  {studio:"Sony Pictures Animation", title:"Visual Development Artist", ind:"animation", loc:"la", locText:"Los Angeles · Onsite",
-  type:"staff", typeText:"Staff · TAG union", exp:"No minimum stated — portfolio-driven", pay:"$59.16 – $85.00/hr (≈$123k–$177k)", focus:"both",
-  fit:"fit", note:"Sets, locations, props, characters, VFX, color schemes and overall style. Broadest scope of any animation role open in LA.",
+  type:"staff", typeText:"Staff · TAG union", exp:"No years requirement stated — portfolio-driven", pay:"$59.16 – $85.00/hr", focus:"both",
+  fit:"fit", note:"Survived the five-week cull. Sets, locations, props, characters and colour — the broadest creative scope open in LA animation.",
   url:"https://job-boards.greenhouse.io/sonypicturesanimation/jobs/7583479003", group:"top"},
 
- {studio:"Skydance Animation", title:"Visual Development Artist", ind:"animation", loc:"la", locText:"Santa Monica · Hybrid",
-  type:"staff", typeText:"Full-time · TAG union", exp:"8+ yrs environment design/visdev on animated features", pay:"$2,900 – $4,000/week", focus:"environment",
-  fit:"fit", note:"Environment and set design — floor plans, set dressing.",
-  warn:"Unlisted posting: it's absent from Skydance's public board but the application form is live and working. Apply via the direct link.",
-  url:"https://jobs.lever.co/skydance/9f8e7d96-faeb-4789-a6fa-4dfc674665f9", group:"top"},
+ // ===== GAMES & ANIMATION — ALSO WORTH APPLYING =====
+ {studio:"Sony Pictures Animation", title:"Story Artist — Feature", ind:"animation", loc:"la", locText:"Los Angeles · Onsite",
+  type:"staff", typeText:"Staff · TAG union", exp:"No years requirement stated — skills-based", pay:"$53.37 – $80.00/hr", focus:"both",
+  fit:"fit", note:"Adjacent craft rather than concept, but it's union staff at a studio with only two open roles, and there's no experience gate at all. Nearly missed — Greenhouse's board index is stale-cached and doesn't list it.",
+  url:"https://job-boards.greenhouse.io/sonypicturesanimation/jobs/7929939003", group:"second"},
 
- {studio:"Skydance Animation", title:"Character Designer", ind:"animation", loc:"la", locText:"Santa Monica · Hybrid",
-  type:"staff", typeText:"Full-time · TAG union", exp:"8+ yrs character design on animated features", pay:"$2,900 – $4,000/week", focus:"character",
-  fit:"fit", note:"Pure character design for feature animation. Guild membership required or willingness to obtain.",
-  url:"https://jobs.lever.co/skydance/9084fa54-a4e8-4886-abb1-5dd060c83663", group:"top"},
-
- {studio:"Sony Pictures Animation", title:"Character Designer", ind:"animation", loc:"la", locText:"Culver City · Onsite",
-  type:"staff", typeText:"Staff · TAG union", exp:"Feature/TV/game experience preferred, no year minimum", pay:"$42.64 – $72.00/hr", focus:"character",
-  fit:"fit", note:"Character appearance, expressions, poses, turnarounds.",
-  warn:"Verify before applying — Sony's board showed only 2 live roles on final check and this may have closed.",
-  url:"https://job-boards.greenhouse.io/sonypicturesanimation/jobs/6213553003", group:"second"},
-
- {studio:"Netflix Animation (Ink)", title:"Visual Development Artist", ind:"animation", loc:"la", locText:"Los Angeles · Onsite",
-  type:"staff", typeText:"Not stated", exp:"4+ yrs visdev in animation, VFX, games or digital media", pay:"Not posted (~$70/hr per aggregators)", focus:"both",
-  fit:"fit", note:"Characters, environments and set layouts for Netflix's Ink group.",
-  warn:"Requires familiarity with AI-assisted and generative AI creative workflows.",
+ {studio:"Netflix Animation (Ink)", title:"Visual Development Artist", ind:"animation", loc:"la", locText:"LA / Vancouver / Los Gatos · Onsite",
+  type:"staff", typeText:"Not stated", exp:"4+ yrs visdev in animation, VFX, games or digital media", pay:"Not posted", focus:"both",
+  fit:"fit", note:"Characters, environments and set layouts.",
+  warn:"Requires a stated \"genuine interest in Generative AI imagery and video\" — this is now explicit in the req, not just a preference.",
   url:"https://explore.jobs.netflix.net/careers/job/790317300191", group:"second"},
 
- {studio:"Skydance Animation", title:"Costume Designer (Visual Development)", ind:"animation", loc:"la", locText:"Santa Monica · Hybrid",
-  type:"staff", typeText:"Full-time · TAG union", exp:"8+ yrs visdev on animated projects + 1+ yr costume design", pay:"$2,900 – $4,000/week", focus:"character",
-  fit:"fit", note:"2D drawing / Photoshop-based character costume work. Niche but the visdev requirement is the real bar.",
-  url:"https://jobs.lever.co/skydance/e4a59a8a-28f3-46f7-ae4d-5ad8eb5cab06", group:"second"},
+ {studio:"Riot Games", title:"Principal Concept Artist, Environment — League of Legends", ind:"games", loc:"la", locText:"Los Angeles",
+  type:"staff", typeText:"Full-time", exp:"10+ yrs concept art for games or animation", pay:"$166,600 – $232,800 + equity", focus:"environment",
+  fit:"stretch", note:"Title corrected — it's Environment only, not the Environment/Character role listed before. Above her band but worth an application.",
+  url:"https://www.riotgames.com/en/work-with-us/job/8070799", group:"second"},
 
  {studio:"Skydance Animation", title:"Art Director", ind:"animation", loc:"la", locText:"Santa Monica · Hybrid",
-  type:"staff", typeText:"Full-time · TAG union", exp:"6+ yrs on animated feature productions", pay:"$2,900 – $4,000/week", focus:"both",
-  fit:"stretch", note:"Environments, sets, props and color design. Leadership role — a step up if she's ready to direct.",
+  type:"staff", typeText:"Full-time · TAG union", exp:"6 yrs on animated feature productions", pay:"$4,000 – $4,600/week", focus:"both",
+  fit:"stretch", note:"Pay band is higher than previously listed. Now one of only two art roles left at Skydance — the visdev and character design reqs are gone.",
   url:"https://jobs.lever.co/skydance/3c0632d5-f6a1-436b-a94c-a41854ebcce3", group:"second"},
 
- {studio:"Netflix Animation (Ink)", title:"Art Director", ind:"animation", loc:"la", locText:"Los Angeles · Onsite",
-  type:"staff", typeText:"Not stated", exp:"3+ yrs supervisory/leadership on animated features or series", pay:"Not posted", focus:"both",
-  fit:"stretch", note:"Oversees visdev, color design, background painting and character design.",
-  warn:"Requires familiarity with AI-assisted and generative AI creative workflows.",
+ {studio:"Riot Games", title:"Manager, Visual Design Art — TFT", ind:"games", loc:"la", locText:"Los Angeles",
+  type:"staff", typeText:"Full-time", exp:"5+ yrs UI/visual design in games + 2+ yrs people management", pay:"$166,600 – $232,800 + equity", focus:"both",
+  fit:"stretch", note:"Management track rather than pure craft, but the experience bar is inside her range and the pay is top-of-market.",
+  url:"https://www.riotgames.com/en/work-with-us/jobs", group:"second"},
+
+ {studio:"Netflix Animation (Ink)", title:"Art Director", ind:"animation", loc:"la", locText:"California · Remote",
+  type:"staff", typeText:"Not stated", exp:"3+ yrs supervisory on animated features", pay:"Not posted", focus:"both",
+  fit:"stretch", note:"Now listed as California-Remote rather than LA onsite — a meaningful change since August.",
+  warn:"Same generative-AI requirement as the other Ink roles.",
   url:"https://explore.jobs.netflix.net/careers/job/790315938401", group:"second"},
 
- {studio:"Netflix Animation (Ink)", title:"Character Designer", ind:"animation", loc:"la", locText:"Los Angeles · Onsite",
-  type:"staff", typeText:"Not stated", exp:"2+ yrs, or a strong production-ready portfolio", pay:"Not posted (~$70/hr per aggregators)", focus:"character",
-  fit:"reach", note:"Junior-to-mid bar — likely below her level and pay, but a fast door into Netflix Animation.",
-  warn:"Requires familiarity with AI-assisted and generative AI creative workflows.",
+ {studio:"Netflix Animation (Ink)", title:"Character Designer", ind:"animation", loc:"la", locText:"LA / Vancouver / Los Gatos · Onsite",
+  type:"staff", typeText:"Not stated", exp:"2+ yrs, or a strong production-ready portfolio", pay:"Not posted", focus:"character",
+  fit:"reach", note:"Junior-to-mid bar — below her level, but a fast door into Netflix Animation.",
+  warn:"Same generative-AI requirement.",
   url:"https://explore.jobs.netflix.net/careers/job/790317332872", group:"second"},
 
- {studio:"Skydance Animation", title:"Associate Costume Designer", ind:"animation", loc:"la", locText:"Santa Monica · Hybrid",
-  type:"staff", typeText:"Full-time · TAG union", exp:"Associate level", pay:"Not posted", focus:"character",
-  fit:"reach", note:"Below her level, but another route onto the Skydance visdev team.",
-  url:"https://jobs.lever.co/skydance", group:"second"},
-
+ {studio:"MobilityWare", title:"Artist / Illustrator — 2D", ind:"games", loc:"la", locText:"Irvine · Hybrid, onsite Tue + Wed",
+  type:"staff", typeText:"Full-time", exp:"0–5 yrs professional art/illustration", pay:"$75,000 – $95,000", focus:"both",
+  fit:"reach", note:"Backgrounds, props, characters, icons and UI for mobile games. Well below her level on both pay and bar, but it's a real open 2D seat in Orange County.",
+  url:"https://job-boards.greenhouse.io/mobilityware/jobs/8061925", group:"second"},
 
  // ===== ADJACENT INDUSTRIES =====
  {studio:"Age of Learning (ABCmouse)", title:"2D Game Artist (Mid–Senior)", ind:"adjacent", loc:"la", locText:"Glendale · Hybrid, 3 days onsite",
   type:"staff", typeText:"Full-time", exp:"6+ yrs 2D game art, illustration or UI", pay:"$110,000 – $135,000", focus:"both",
-  fit:"fit", note:"Characters, environments and UI. Pays more than most of the animation roles on this list and nobody from concept art applies here. Gate is a cute, stylized, family-friendly portfolio plus Rive or Spine — 4–8 weeks of targeted work.",
+  fit:"fit", note:"Still open after five weeks and still the best-paying LA-proper fit outside the majors. Characters, environments and UI.",
   warn:"Company states it embraces AI tools and asks candidates directly about comfort using them.",
   url:"https://job-boards.greenhouse.io/ageoflearninginc/jobs/4338304009", group:"adjacent"},
 
+ {studio:"Funko / Loungefly", title:"Manager, Concept Design", ind:"adjacent", loc:"la", locText:"Burbank + Everett WA · Onsite",
+  type:"staff", typeText:"Full-time", exp:"7+ yrs in consumer products, collectibles, toys or plush + 2+ yrs management", pay:"$105,000 – $130,000", focus:"character",
+  fit:"fit", note:"Character and product concept work on vinyl and plush lines, concept through production. New since August.",
+  warn:"Jobvite shows only \"2 Locations\" — confirm Burbank is genuinely available before assuming no relocation.",
+  url:"https://jobs.jobvite.com/funko/job/oelrAfwk", group:"adjacent"},
+
+ {studio:"Funko / Loungefly", title:"Creative Manager, Graphic Design", ind:"adjacent", loc:"la", locText:"Burbank · Onsite",
+  type:"staff", typeText:"Full-time", exp:"3–6 yrs fashion/softlines creative or product design + 1–3 yrs leadership", pay:"$90,610 – $110,500", focus:"both",
+  fit:"fit", note:"Player-coach role combining concept and graphic work. The better economic fit of the two Loungefly craft roles.",
+  url:"https://jobs.jobvite.com/funko/job/orrDAfwP", group:"adjacent"},
+
  {studio:"Mattel", title:"Lead Artist — Digital Gaming", ind:"adjacent", loc:"la", locText:"El Segundo",
   type:"staff", typeText:"Full-time", exp:"5+ yrs as Lead Artist or above in mobile games", pay:"$96,800 – $137,000", focus:"both",
-  fit:"fit", note:"Asks for a BA in illustration, graphic design or fine arts. This is a concept artist job wearing a toy company's badge — directs external dev partners, ships mobile titles.",
-  warn:"The posting contradicts itself on pay: header says $115,000–$144,000, body says $96,800–$137,000. Worth clarifying early.",
+  fit:"fit", note:"Open since April — either a hard req to fill or a slow pipeline, but either way it's still live. Asks for a BA in illustration or fine arts.",
+  warn:"The posting contradicts itself on pay: header says $115,000–$144,000, body says $96,800–$137,000.",
   url:"https://jobs.mattel.com/en/job/el-segundo/lead-artist-digital-gaming/2015/94344374656", group:"adjacent"},
 
  {studio:"Mattel", title:"Lead Designer — Dolls Style Guide", ind:"adjacent", loc:"la", locText:"El Segundo",
   type:"staff", typeText:"Full-time", exp:"7+ yrs graphic design / style guide development", pay:"$115,000 – $140,000", focus:"character",
-  fit:"fit", note:"Style-guide work is character-sheet and IP-bible work by another name, and this role art-directs external illustrators. Gap is Illustrator/InDesign fluency and print production literacy — weeks, not years.",
+  fit:"fit", note:"Style-guide work is character-sheet and IP-bible work by another name, and this role art-directs external illustrators.",
   url:"https://jobs.mattel.com/en/job/el-segundo/lead-designer-consumer-products-dolls-style-guide/2015/97760454448", group:"adjacent"},
 
  {studio:"Mattel", title:"Sr Brand Designer — Brand Creative, Games", ind:"adjacent", loc:"la", locText:"El Segundo",
   type:"staff", typeText:"Full-time", exp:"5–7+ yrs graphic / brand design", pay:"$95,000 – $119,000", focus:"both",
-  fit:"fit", note:"Key art development and brand systems for UNO, Pictionary, Phase 10 and Magic 8 Ball. Posted August 7 — one of the freshest listings on this whole tracker.",
+  fit:"fit", note:"Key art development for UNO, Pictionary and Phase 10.",
   url:"https://jobs.mattel.com/en/job/el-segundo/sr-brand-designer-brand-creative-games/2015/98892692704", group:"adjacent"},
 
- {studio:"Sphere Studios", title:"Art Director (Expression of Interest)", ind:"adjacent", loc:"la", locText:"Burbank",
+ {studio:"Age of Learning (ABCmouse)", title:"Senior Visual Designer", ind:"adjacent", loc:"la", locText:"Glendale · Hybrid, 3 days onsite",
+  type:"staff", typeText:"Full-time", exp:"8+ yrs visual design, agency or in-house", pay:"$115,000 – $135,000", focus:"both",
+  fit:"fit", note:"New since August. User-acquisition and app-store creative, explicitly involving integration of 2D and 3D character art.",
+  url:"https://job-boards.greenhouse.io/ageoflearninginc/jobs/4323579009", group:"adjacent"},
+
+ {studio:"Sphere Studios", title:"Art Director (Expression of Interest)", ind:"adjacent", loc:"la", locText:"Burbank · Onsite",
   type:"contract", typeText:"Temporary ~12 weeks, part-time", exp:"5+ yrs design and art direction in a studio or agency", pay:"$4,500 – $5,000/week", focus:"both",
-  fit:"fit", note:"Immersive content for the Sphere venues. Highest weekly rate anywhere on this tracker. Wants an experiential design background plus advanced Photoshop, Illustrator and After Effects.",
+  fit:"fit", note:"Highest weekly rate on the tracker — roughly $54k–$60k for a 12-week run, plus a real credential in immersive work.",
   url:"https://www.sphereentertainmentco.com/jobs/expression-of-interest-art-director-burbank-ca/?gh_jid=5197060007", group:"adjacent"},
 
- {studio:"Sphere Studios", title:"Designer (Expression of Interest)", ind:"adjacent", loc:"la", locText:"Burbank",
-  type:"contract", typeText:"Temporary ~12 weeks", exp:"3–5+ yrs in a fast-paced creative production studio", pay:"$3,000 – $3,400/week", focus:"both",
-  fit:"fit", note:"The lower rung of the same Sphere pipeline. 3D modelling or animation preferred but not required.",
+ {studio:"Sphere Studios", title:"Designer (Expression of Interest)", ind:"adjacent", loc:"la", locText:"Burbank · Onsite",
+  type:"contract", typeText:"Temporary ~12 weeks, part-time", exp:"3–5+ yrs in a fast-paced creative production studio", pay:"$3,000 – $3,400/week", focus:"both",
+  fit:"fit", note:"The lower rung of the same Sphere pipeline.",
   url:"https://www.sphereentertainmentco.com/jobs/expression-of-interest-designer-burbank-ca/?gh_jid=5197043007", group:"adjacent"},
 
  {studio:"BRC Imagination Arts", title:"Concept Illustrator (open application)", ind:"adjacent", loc:"la", locText:"Burbank",
   type:"staff", typeText:"Talent pipeline — always open", exp:"Portfolio-driven", pay:"Not posted", focus:"environment",
-  fit:"fit", note:"Themed entertainment and museum design — Heineken Experience, World of Coca-Cola, Kennedy Space Center. Their careers page explicitly lists \"Concept Illustrators\" as a category, so this is a warm door with no posting required.",
-  warn:"Ownership transition completed June 2026 — new co-owners across the creative leadership, which usually means fresh hiring.",
+  fit:"fit", note:"Themed entertainment and museum design. Their careers page still explicitly lists \"Concept Illustrators\" as a category — a warm door needing no posting. Fifteen minutes of work.",
   url:"https://brcweb.com/careers/", group:"adjacent"},
+
+ {studio:"Funko / Loungefly", title:"Graphic Designer", ind:"adjacent", loc:"la", locText:"Burbank · Onsite",
+  type:"staff", typeText:"Full-time", exp:"2–6 yrs fashion/softlines creative, graphic or product design", pay:"$70,304 – $82,000", focus:"character",
+  fit:"reach", note:"The posting literally says \"illustrate original character art\" — it's an illustration job wearing a graphic-design title. Pay is below her level; apply and let them place her against the Creative Manager req instead.",
+  url:"https://jobs.jobvite.com/funko/job/ompDAfwI", group:"adjacent"},
+
+ {studio:"Funko / Loungefly", title:"Art Director", ind:"adjacent", loc:"la", locText:"Burbank · Onsite",
+  type:"staff", typeText:"Full-time", exp:"7–10+ yrs graphic design incl. 5 yrs senior creative leadership", pay:"$121,000 – $151,500", focus:"both",
+  fit:"stretch", note:"Brand and creative leadership for Loungefly. Top of her band on experience.",
+  url:"https://jobs.jobvite.com/funko/job/o8HzAfwI", group:"adjacent"},
 
  {studio:"MGA Entertainment", title:"Sr. Designer — Diecast Graphics", ind:"adjacent", loc:"la", locText:"Los Angeles / Chatsworth",
   type:"staff", typeText:"Full-time", exp:"5+ yrs professional graphic design", pay:"$75,000 – $100,000", focus:"environment",
-  fit:"fit", note:"Livery and deco design on toy cars. Needs Illustrator plus KeyShot and genuine car-culture fluency — learnable in months.",
-  warn:"Posted February 27, 2026 — roughly five months stale. Confirm it's still real before investing time.",
+  fit:"fit", note:"Livery and deco design on toy cars. Needs Illustrator plus KeyShot.",
+  warn:"Conflicting signals — one check found it live, another couldn't find it on MGA's board at all. Posted February, so it's seven months old. Verify before investing time.",
   url:"https://careers.mgae.com/jobs/sr-designer-diecast-graphics-9203579173043_1/", group:"adjacent"},
 
- {studio:"Spin Master", title:"Senior Designer — Gabby's Dollhouse (Contract)", ind:"adjacent", loc:"la", locText:"Los Angeles · In-office 4 days",
-  type:"contract", typeText:"Contract", exp:"Senior level", pay:"$40 – $45/hr", focus:"character",
-  fit:"reach", note:"Involves actual character sketching alongside 2D renderings and specs. Rate is below her level, but it's a live LA toy-design credit on a major preschool IP.",
-  url:"https://spinmaster.wd3.myworkdayjobs.com/en-US/SpinMaster_Careers", group:"adjacent"},
-
- // ===== REMOTE / FREELANCE =====
- {studio:"Obsidian Entertainment", title:"Senior Concept Artist (Contract)", ind:"games", loc:"remote", locText:"Fully remote (US)",
-  type:"contract", typeText:"6-month contract, extension possible", exp:"6+ yrs game development", pay:"$60 – $64/hr", focus:"both",
-  fit:"fit", note:"Environment, character, creature, vehicle, weapon and prop. The single best remote fit on the list — squarely in her experience band.",
-  url:"https://obsidian.applytojob.com/apply/gCQoTttJjV/Senior-Concept-Artist-Contract", group:"remote"},
-
+ // ===== REMOTE & FREELANCE =====
  {studio:"Mob Entertainment", title:"2D Art Lead", ind:"games", loc:"remote", locText:"Fully remote (US)",
   type:"staff", typeText:"Full-time", exp:"5+ yrs 2D game art, 3+ yrs leading 2D teams", pay:"$132,000 – $169,000 (LA tier)", focus:"both",
-  fit:"fit", note:"Style, concept, production and marketing art. Poppy Playtime studio. Pay is tiered by metro — LA gets the top band.",
+  fit:"fit", note:"Style, concept, production and marketing art for the Poppy Playtime studio. Pay is tiered by metro and LA gets the top band.",
   url:"https://job-boards.greenhouse.io/mobentertainment/jobs/5200088007", group:"remote"},
 
- {studio:"NetEase Games", title:"Senior/Lead Character Concept Artist (Stylized)", ind:"games", loc:"remote", locText:"US-remote eligible",
+ {studio:"Mob Entertainment", title:"Concept Artist", ind:"games", loc:"remote", locText:"Fully remote (US)",
+  type:"staff", typeText:"Full-time", exp:"3+ yrs professional concept art, and a shipped AA title", pay:"$83,000 – $101,000 (LA tier)", focus:"both",
+  fit:"fit", note:"New since August. Lower band than the Art Lead role at the same studio — worth applying to both.",
+  url:"https://job-boards.greenhouse.io/mobentertainment/jobs/5221783007", group:"remote"},
+
+ {studio:"NetEase Games", title:"Senior/Lead Character Concept Artist (Stylized)", ind:"games", loc:"remote", locText:"US-remote / Canada-remote / Singapore",
   type:"staff", typeText:"Full-time", exp:"5+ yrs character concept art", pay:"Not disclosed", focus:"character",
-  fit:"fit", note:"High-quality stylized character design. Leadership experience preferred, not required.",
+  fit:"fit", note:"Stylized character design benchmarked against Valorant and Fortnite. Confirmed live despite being invisible in board listings.",
   url:"https://job-boards.greenhouse.io/neteasegames/jobs/5191784007", group:"remote"},
 
- {studio:"Clay Urn LLC", title:"Visual Development / Concept Artist", ind:"games", loc:"remote", locText:"Remote",
-  type:"contract", typeText:"Freelance · 4–6 weeks part-time", exp:"Portfolio-based", pay:"$3,500 fixed fee", focus:"both",
-  fit:"reach", note:"Direction boards, paintovers, creature sheets. Small gig — useful as gap-filler, not a target.",
-  url:"https://www.workwithindies.com/careers/clay-urn-visual-development-concept-artist", group:"remote"},
+ {studio:"PLAYSTUDIOS", title:"2D Game Artist (Full-Time Remote)", ind:"adjacent", loc:"remote", locText:"Fully remote · distributed team",
+  type:"staff", typeText:"Full-time", exp:"Not exposed on the listing", pay:"Not posted", focus:"both",
+  fit:"fit", note:"Characters, backgrounds, symbols and UI for mobile slots. Social-casino art is under-recruited and she'd be overqualified on craft. Three near-identical reqs are posted — apply to one.",
+  warn:"ArtStation renders client-side, so pay and experience requirements couldn't be verified. Treat details as unknown until you ask.",
+  url:"https://www.artstation.com/jobs/J1Eg", group:"remote"},
 
- {studio:"Skydance Animation", title:"2D Effects Artist", ind:"animation", loc:"remote", locText:"Santa Monica / Remote",
-  type:"contract", typeText:"Temporary / freelance", exp:"Not stated", pay:"Not posted", focus:"both",
-  fit:"reach", note:"Adjacent discipline — listed only because it's a live foot in the door at Skydance.",
-  url:"https://jobs.lever.co/skydance/53d76f8f-f886-472e-b526-331056e7c87a", group:"remote"}
+ {studio:"Skydance Animation", title:"2D Effects Artist (Temporary/Freelance)", ind:"animation", loc:"remote", locText:"Santa Monica / CT / NY / NJ / UK / Remote EU",
+  type:"contract", typeText:"Freelance", exp:"1+ yr in 2D animation or visual development with an effects focus", pay:"$115,000 – $140,000 annualized (LA/Tri-State)", focus:"both",
+  fit:"reach", note:"Adjacent discipline and a low bar, but the rate is strong and it's a live foot in the door at Skydance.",
+  url:"https://jobs.lever.co/skydance/53d76f8f-f886-472e-b526-331056e7c87a", group:"remote"},
+
+ // ===== WORTH RELOCATING FOR =====
+ {studio:"Wizards of the Coast (Hasbro)", title:"Commissioning Art Director — D&D", ind:"adjacent", loc:"other", locText:"Renton, WA · Onsite",
+  type:"staff", typeText:"Full-time", exp:"2+ yrs commercial art experience", pay:"$109,100 – $180,600", focus:"both",
+  fit:"fit", note:"A $109,100 floor against a 2+ year bar — she is substantially over-qualified for the stated requirement. Sourcing and directing freelance fantasy illustrators. The highest ceiling found anywhere in this search.",
+  warn:"Renton, Washington. Requires relocation — no remote option.",
+  url:"https://jobs.hasbro.com/job-detail/commissioning-art-director-d-and-d-4386587009", group:"relocate"},
+
+ {studio:"Wizards of the Coast (Hasbro)", title:"Art Director, Print Innovation", ind:"adjacent", loc:"other", locText:"Renton, WA · Onsite",
+  type:"staff", typeText:"Full-time", exp:"4+ yrs professional graphic design and/or art direction", pay:"$109,100 – $180,600", focus:"both",
+  fit:"fit", note:"Magic: The Gathering specialty print finishes and card-frame design. Posted Sept 11 — the freshest listing on this tracker.",
+  warn:"Renton, Washington. Requires relocation.",
+  url:"https://jobs.hasbro.com/job-detail/art-director-print-innovation-4386021009", group:"relocate"},
+
+ {studio:"Fanatics Collectibles (Topps)", title:"Concept Artist — Trading Card Game", ind:"adjacent", loc:"other", locText:"Seattle, WA · Onsite 5 days",
+  type:"staff", typeText:"Full-time", exp:"No years stated — games, film or publishing background preferred", pay:"$88,550 – $110,400", focus:"both",
+  fit:"fit", note:"Character, creature and environment design establishing the visual language of new TCG franchises. One of very few roles anywhere titled Concept Artist with no experience gate.",
+  warn:"Seattle, on-site five days a week, explicitly not remote.",
+  url:"https://job-boards.greenhouse.io/fanaticscollectibles/jobs/4309487009", group:"relocate"}
 ];
 
 const GROUPS = [
   {key:"top",      label:"Apply first — strongest matches"},
   {key:"second",   label:"Also worth applying"},
   {key:"adjacent", label:"Adjacent industries — toys, edtech, themed entertainment"},
-  {key:"remote",   label:"Remote &amp; freelance"}
+  {key:"remote",   label:"Remote &amp; freelance"},
+  {key:"relocate", label:"Worth relocating for"}
 ];
 const FITLABEL = {fit:"Strong fit", stretch:"Stretch", reach:"Below level"};
 
